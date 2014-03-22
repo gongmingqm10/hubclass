@@ -19,6 +19,8 @@ class User
 
   has_many :owner_groups, class_name: 'Group', inverse_of: :teacher
   has_and_belongs_to_many :groups, class_name: 'Group', inverse_of: :members
+  has_many :notes, class_name: 'Note'
+  has_many :attachments,
 
   embeds_many :comments, class_name: 'Comment'
 
