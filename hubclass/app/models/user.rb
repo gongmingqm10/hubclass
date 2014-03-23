@@ -20,8 +20,7 @@ class User
   has_many :owner_groups, class_name: 'Group', inverse_of: :teacher
   has_and_belongs_to_many :groups, class_name: 'Group', inverse_of: :members
   has_many :notes, class_name: 'Note'
-  has_many :attachments,
-
+  has_many :attachments, class_name: 'Attachment'
   embeds_many :comments, class_name: 'Comment'
 
   def is_student?
@@ -30,7 +29,7 @@ class User
 
   class << self
     def authenticate (username, password)
-      user = find_by(username: username)
+      user = find_by(user_number: username.downcase)
       if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
         user
       end

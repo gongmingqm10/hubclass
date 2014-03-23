@@ -1,6 +1,6 @@
 class WebUiController < ApplicationController
 
-  #before_action :login?, except: [:login, :sessions, :layout]
+  before_action :login?, except: [:login, :sessions, :layout]
 
   rescue_from CanCan::AccessDenied do |exception|
     session.delete(:user_id)

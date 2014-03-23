@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="Hust:hubclass">
+<head>
+  <title>Hust互动课堂-登录</title>
+  <%= stylesheet_link_tag    "login", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "app-login", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <div class="login" ng-controller="LoginController">
+    <%= form_tag login_path, class: 'form form-horizontal', name: 'loginForm', role: :form, id: 'login-form'  do %>
+        <div class="form-group has-error">
+          <% if @error%>
+              <span class="help-block">用户名或密码错误</span>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 right-inner-addon">
+            <input type="text" class="form-control" name="username" placeholder="用户名/邮箱" required ng-model="user.username">
+            <span class="icon icon-user"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 right-inner-addon">
+            <input type="password" class="form-control" name="password" placeholder="密码" required ng-model="user.password">
+            <span class="icon icon-lock"></span>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary col-md-12"><i class="fa fa-check"></i> 登 录</button>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
