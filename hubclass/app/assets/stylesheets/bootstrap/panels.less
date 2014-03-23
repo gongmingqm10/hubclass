@@ -5,37 +5,17 @@
 
 // Base class
 .panel {
-  word-wrap: break-word;
+  margin-bottom: @line-height-computed;
   background-color: @panel-bg;
   border: 1px solid transparent;
-  border-bottom-width: 2px;
   border-radius: @panel-border-radius;
-  .box-shadow(none);
+  .box-shadow(0 1px 1px rgba(0,0,0,.05));
 }
 
 // Panel contents
 .panel-body {
-  padding: @panel-body-padding;
-}
-
-// Optional heading
-.panel-heading {
-  padding: 15px 20px;
-  // border-bottom: 1px solid transparent;
-  .border-top-radius(@panel-border-radius);
-}
-
-// Within heading, strip any `h*` tag of its default margins for spacing.
-.panel-title {
-  font-size: floor((@font-size-base * 1.25));
-}
-
-// Optional footer (stays gray in every modifier class)
-.panel-footer {
-  padding: 15px 20px;
-  background-color: @panel-footer-bg;
-  border-top: 1px solid @panel-inner-border;
-  .border-bottom-radius(@panel-border-radius);
+  padding: 15px;
+  .clearfix();
 }
 
 
@@ -46,20 +26,29 @@
 
 .panel {
   > .list-group {
-    // Add border top radius for first one
-    &:first-child {
-      .list-group-item:first-child {
-        .border-top-radius((@panel-border-radius - 1));
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-width: 1px 0;
+
+      // Remove border radius for top one
+      &:first-child {
+        .border-top-radius(0);
       }
-    }
-    // Add border bottom radius for last one
-    &:last-child {
-      .list-group-item:last-child {
-        .border-bottom-radius((@panel-border-radius - 1));
+      // But keep it for the last one
+      &:last-child {
+        border-bottom: 0;
       }
     }
   }
 }
+// Collapse space between when there's no additional content.
+.panel-heading + .list-group {
+  .list-group-item:first-child {
+    border-top-width: 0;
+  }
+}
+
 
 // Tables in panels
 //
@@ -67,65 +56,77 @@
 // watch it go full width.
 
 .panel {
-  // Add border top radius for first one
-  > .table:first-child,
-  > .table-responsive:first-child > .table:first-child {
-    > thead:first-child,
-    > tbody:first-child {
-      > tr:first-child {
-        td:first-child,
-        th:first-child {
-          border-top-left-radius: (@panel-border-radius - 1);
-        }
-        td:last-child,
-        th:last-child {
-          border-top-right-radius: (@panel-border-radius - 1);
-        }
-      }
-    }
-  }
-  // Add border bottom radius for last one
-  > .table:last-child,
-  > .table-responsive:last-child > .table:last-child {
-    > tbody:last-child,
-    > tfoot:last-child {
-      > tr:last-child {
-        td:first-child,
-        th:first-child {
-          border-bottom-left-radius: (@panel-border-radius - 1);
-        }
-        td:last-child,
-        th:last-child {
-          border-bottom-right-radius: (@panel-border-radius - 1);
-        }
-      }
-    }
+  > .table,
+  > .table-responsive > .table {
+    margin-bottom: 0;
   }
   > .panel-body + .table,
   > .panel-body + .table-responsive {
     border-top: 1px solid @table-border-color;
   }
+  > .table > tbody:first-child th,
+  > .table > tbody:first-child td {
+    border-top: 0;
+  }
+  > .table-bordered,
+  > .table-responsive > .table-bordered {
+    border: 0;
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th:first-child,
+        > td:first-child {
+          border-left: 0;
+        }
+        > th:last-child,
+        > td:last-child {
+          border-right: 0;
+        }
+
+        &:last-child > th,
+        &:last-child > td {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  > .table-responsive {
+    border: 0;
+    margin-bottom: 0;
+  }
 }
 
 
-// Contextual variations
-.panel-default {
-  .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-heading-bg);
+// Optional heading
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  .border-top-radius(@panel-border-radius - 1);
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
 }
-.panel-primary {
-  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+
+// Within heading, strip any `h*` tag of it's default margins for spacing.
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: ceil((@font-size-base * 1.125));
+  color: inherit;
+
+  > a {
+    color: inherit;
+  }
 }
-.panel-success {
-  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
-}
-.panel-info {
-  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
-}
-.panel-warning {
-  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
-}
-.panel-danger {
-  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+
+// Optional footer (stays gray in every modifier class)
+.panel-footer {
+  padding: 10px 15px;
+  background-color: @panel-footer-bg;
+  border-top: 1px solid @panel-inner-border;
+  .border-bottom-radius(@panel-border-radius - 1);
 }
 
 
@@ -135,61 +136,47 @@
 // the help of our collapse JavaScript plugin.
 
 .panel-group {
-  margin-bottom: @line-height-computed;
-
   // Tighten up margin so it's only between panels
   .panel {
-    border-color: transparent;
-    border-radius: 0;
+    margin-bottom: 0;
+    border-radius: @panel-border-radius;
+    overflow: hidden; // crop contents when collapsed
     + .panel {
-      margin-top: -3px;
+      margin-top: 5px;
     }
   }
 
   .panel-heading {
-    padding: 0 15px;
-    background-color: #fafafa;
-    border-top: 1px dashed #ccc;
-    border-bottom: 1px dashed #ccc;
-
-    a {
-      display: block;
-      padding: 10px 0 9px;
-      color: #444;
-      text-decoration: none;
-
-      &:before {
-        content: "\e082";
-        margin-right: 7px;
-        &:extend(.glyphicon);
-      }
-
-      &:hover {
-        background-color: #f5f5f5;
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      &.collapsed:before {
-        content: "\e081";
-        margin-right: 7px;
-        &:extend(.glyphicon);
-      }
-    }
-
-    .panel-title {
-      font-size: @font-size-base;
-    }
-
+    border-bottom: 0;
     + .panel-collapse .panel-body {
-      border-top: 0 none;
+      border-top: 1px solid @panel-inner-border;
     }
   }
   .panel-footer {
+    border-top: 0;
     + .panel-collapse .panel-body {
-      border-bottom: 0 none;
+      border-bottom: 1px solid @panel-inner-border;
     }
   }
+}
+
+
+// Contextual variations
+.panel-default {
+  .panel-variant(@panel-default-border; @panel-default-text; @panel-default-heading-bg; @panel-default-border);
+}
+.panel-primary {
+  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+}
+.panel-success {
+  .panel-variant(@panel-success-border; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+}
+.panel-warning {
+  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+}
+.panel-danger {
+  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+}
+.panel-info {
+  .panel-variant(@panel-info-border; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
 }

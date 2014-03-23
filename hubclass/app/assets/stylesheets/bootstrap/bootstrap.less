@@ -1,28 +1,28 @@
 // Core variables and mixins
-@import "variables";
-@import "../bootstrap/less/mixins.less";
-@import (reference) "../bootstrap/less/glyphicons.less";
-@import (reference) "../bootstrap/less/dropdowns.less";
+@import "variables.less";
 @import "mixins.less";
-@import "arrows.less";
+
+// Reset
+@import "normalize.less";
+@import "print.less";
 
 // Core CSS
 @import "scaffolding.less";
-@import "type";
+@import "type.less";
 @import "code.less";
+@import "grid.less";
 @import "tables.less";
 @import "forms.less";
 @import "buttons.less";
 
 // Components
+@import "component-animations.less";
+@import "glyphicons.less";
 @import "dropdowns.less";
 @import "button-groups.less";
 @import "input-groups.less";
 @import "navs.less";
 @import "navbar.less";
-@import "masthead.less";
-@import "toolbar";
-@import "navbar-common.less";
 @import "breadcrumbs.less";
 @import "pagination.less";
 @import "pager.less";
@@ -32,15 +32,18 @@
 @import "thumbnails.less";
 @import "alerts.less";
 @import "progress-bars.less";
-// @import "media.less";
+@import "media.less";
 @import "list-group.less";
 @import "panels.less";
-@import "wells";
-// @import "close.less";
-@import "scrollbars.less";
+@import "wells.less";
+@import "close.less";
 
 // Components w/ JavaScript
 @import "modals.less";
-@import "tooltip";
+@import "tooltip.less";
 @import "popovers.less";
 @import "carousel.less";
+
+// Utility classes
+@import "utilities.less";
+@import "responsive-utilities.less";

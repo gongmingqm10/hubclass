@@ -1,0 +1,13 @@
+//= require jquery
+//= require jquery.ui.all
+//= require jquery_ujs
+//= require bootstrap.min
+//= require underscore
+//= require angular.min
+//= require angular-cookies.min
+//= require angular-sanitize.min
+//= require lib/common/module
+//= require_directory ./common/services
+//= require_directory ./common/controllers
+//= require_directory ./common/directives
+//= require_directory ./common/filters

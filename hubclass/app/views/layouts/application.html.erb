@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Hust:hubclass">
 <head>
-  <title>Hubclass</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <title>Hust互动课堂</title>
+  <%= yield :assets %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<%= render :partial => 'layouts/header' %>
+
+<div id="wrap">
+  <%= yield %>
+</div>
+
+<%= render :partial => 'layouts/footer' %>
 
 </body>
 </html>

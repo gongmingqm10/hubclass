@@ -1,0 +1,1 @@
+angular.module('Hust:course', ['Hust:common'])

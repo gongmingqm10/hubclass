@@ -53,4 +53,22 @@ Hubclass::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root  "web_ui#index"
+
+  get 'login', to: 'web_ui#login'
+  post 'login', to: 'web_ui#sessions'
+  delete 'logout', to: 'web_ui#logout', as: :logout
+
+  get 'course', to: 'web_ui#course'
+
+  get 'attachment', to: 'web_ui#attachment'
+
+  get 'assignment', to: 'web_ui#assignment'
+
+  get 'sign', to: 'web_ui#sign'
+
+
+
+
 end

@@ -1,0 +1,8 @@
+<% content_for :assets do %>
+    <%= stylesheet_link_tag    "course", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "app-course", "data-turbolinks-track" => true %>
+<% end %>
+
+<div ng-controller="CourseController">
+  <p>welcome to course page.</p>
+</div>

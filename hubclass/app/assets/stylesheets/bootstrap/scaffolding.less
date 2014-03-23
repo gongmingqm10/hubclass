@@ -3,7 +3,21 @@
 // --------------------------------------------------
 
 
+// Reset the box-sizing
+
+*,
+*:before,
+*:after {
+  .box-sizing(border-box);
+}
+
+
 // Body reset
+
+html {
+  font-size: 62.5%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 
 body {
   font-family: @font-family-base;
@@ -28,15 +42,30 @@ textarea {
 
 a {
   color: @link-color;
+  text-decoration: none;
 
   &:hover,
   &:focus {
     color: @link-hover-color;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    .tab-focus();
   }
 }
 
 
 // Images
+
+img {
+  vertical-align: middle;
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+.img-responsive {
+  .img-responsive();
+}
 
 // Rounded corners
 .img-rounded {
@@ -50,56 +79,41 @@ a {
   padding: @thumbnail-padding;
   line-height: @line-height-base;
   background-color: @thumbnail-bg;
-  border: 3px solid @thumbnail-border;
+  border: 1px solid @thumbnail-border;
   border-radius: @thumbnail-border-radius;
-  .box-shadow(0 0 0 1px #aaaaaa);
-  .transition(none);
+  .transition(all .2s ease-in-out);
 
   // Keep them at most 100% wide
   .img-responsive(inline-block);
 }
 
-
-// Miscellaneous
-
-// Additional carets
-.caret-right {
-  &:extend(.caret);
-  vertical-align: baseline;
-  border-top: @caret-width-base solid transparent;
-  border-right: 0 dotted;
-  border-bottom: @caret-width-base solid transparent;
-  border-left: @caret-width-base solid;
-}
-
-.caret-left {
-  &:extend(.caret-right);
-  margin-left: 0;
-  margin-right: 2px;
-  border-right: @caret-width-base solid;
-  border-left: 0 dotted;
+// Perfect circle
+.img-circle {
+  border-radius: 50%; // set radius in percents
 }
 
 
-// Scrollable shadow
-.scrollable-shadow {
-  background:
-    // Shadow covers
-    linear-gradient(white 30%, rgba(255,255,255,0)),
-    linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+// Horizontal rules
 
-    // Shadows
-    radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
-    radial-gradient(50% 100%, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-  background:
-    // Shadow covers
-    linear-gradient(white 30%, rgba(255,255,255,0)),
-    linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+hr {
+  margin-top:    @line-height-computed;
+  margin-bottom: @line-height-computed;
+  border: 0;
+  border-top: 1px solid @hr-border;
+}
 
-    // Shadows
-    radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
-    radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
-  background-repeat: no-repeat;
-  background-attachment: local, local, scroll, scroll; // Opera doesn't support this in the shorthand
-  background-size: 100% 40px, 100% 40px, 100% 6px, 100% 6px;
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }

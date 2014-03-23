@@ -1,0 +1,1 @@
+angular.module('Hust:common', ['ngCookies','ngSanitize'])
