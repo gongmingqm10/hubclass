@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toolbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-example-masthead-collapse-1">
@@ -7,15 +7,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">HUST</a>
+      <a class="navbar-brand" href="/"><img src="/images/hust.png"></a>
     </div>
     <div class="collapse navbar-collapse bs-example-masthead-collapse-1">
       <ul class="nav navbar-nav">
-        <li gm-activate-element="course"><a href="/course">课堂</a></li>
-        <li gm-activate-element="assignment"><a href="/assignment">作业</a></li>
-        <li gm-activate-element="attachment"><a href="/attachment">课件</a></li>
+        <li gm-activate-element="course"><a href="/course"><span class="icon icon-th-large-outline"></span>课堂</a></li>
+        <li gm-activate-element="assignment"><a href="/assignment"><span class="icon icon-book"></span>作业</a></li>
+        <li gm-activate-element="attachment"><a href="/attachment"><span class="icon icon-attach"></span>课件</a></li>
         <li gm-activate-element="sign"><a href="/sign">点名</a></li>
       </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="javascript:void(0);" class="toggle-btn" id="userDropdownMenu" data-toggle="dropdown">
+            <span class="icon icon-user"></span> {{display_name}} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="userDropdownMenu">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><span class="icon icon-cog"></span> 设置</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" data-method="delete" href="/logout" rel="nofollow"><span class="icon icon-logout"></span> 注销</a></li>
+          </ul>
+        </li>
+      </ul>
+
     </div>
   </div>
 </nav>
