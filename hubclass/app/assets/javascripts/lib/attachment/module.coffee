@@ -1,0 +1,1 @@
+angular.module('Hust:attachment', ['Hust:common'])

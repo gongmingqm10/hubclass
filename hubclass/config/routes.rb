@@ -66,7 +66,6 @@ Hubclass::Application.routes.draw do
 
   get 'assignment', to: 'web_ui#assignment'
 
-  get 'sign', to: 'web_ui#sign'
 
 
 

@@ -50,10 +50,6 @@ class WebUiController < ApplicationController
     render 'attachment'
   end
 
-  def sign
-    render 'sign'
-  end
-
   private
 
   def user_info(user)
