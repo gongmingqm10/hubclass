@@ -71,13 +71,11 @@ Hubclass::Application.routes.draw do
   delete 'logout', to: 'web_ui#logout', as: :logout
 
   get 'course', to: 'web_ui#course'
+  get 'course/all', to: 'web_ui#course_all'
+  get 'group', to: 'web_ui#group_show'
 
   get 'attachment', to: 'web_ui#attachment'
 
   get 'assignment', to: 'web_ui#assignment'
-
-
-
-
 
 end

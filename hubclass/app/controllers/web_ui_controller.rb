@@ -42,6 +42,14 @@ class WebUiController < ApplicationController
     render 'course'
   end
 
+  def course_all
+    render partial: 'web_ui/course/all', layout: nil
+  end
+
+  def group_show
+    render partial: 'web_ui/course/show_group', layout: nil
+  end
+
   def assignment
     render 'assignment'
   end
