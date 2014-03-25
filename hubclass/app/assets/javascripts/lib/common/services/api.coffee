@@ -4,10 +4,10 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
   current_user: ->
     _current_user || ''
 
-  participate_courses: (handler) ->
-    $http.get('api/').success(handler)
-
   owner_of_courses: (handler) ->
     $http.get('api/').success(handler)
+
+  index_groups: (handler) ->
+    $http.get("api/users/#{_current_user.id}/groups").success(handler)
 
 ]

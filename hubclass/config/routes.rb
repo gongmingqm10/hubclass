@@ -56,13 +56,14 @@ Hubclass::Application.routes.draw do
 
   root  "web_ui#index"
 
-  resources :users do
-    resources :groups do
-      resources :assignments
-      resources :attachments
+  namespace :api do
+    resources :users do
+      resources :groups do
+        resources :assignments
+        resources :attachments
+        resources :courses
+      end
     end
-    resources :courses
-
   end
 
   get 'login', to: 'web_ui#login'
