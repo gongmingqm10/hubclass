@@ -56,6 +56,7 @@ class WebUiController < ApplicationController
     {
         id: user.id.to_s,
         username: user.username,
+        user_number: user.user_number,
         role: user.role,
         expires: 1.hour.from_now
     }.to_json

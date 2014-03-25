@@ -56,6 +56,15 @@ Hubclass::Application.routes.draw do
 
   root  "web_ui#index"
 
+  resources :users do
+    resources :groups do
+      resources :assignments
+      resources :attachments
+    end
+    resources :courses
+
+  end
+
   get 'login', to: 'web_ui#login'
   post 'login', to: 'web_ui#sessions'
   delete 'logout', to: 'web_ui#logout', as: :logout
