@@ -12,4 +12,5 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
 
   find_group_by_id: (group_id, handler) ->
     $http.get("api/users/#{_current_user.id}/groups/#{group_id}").success(handler)
+
 ]
