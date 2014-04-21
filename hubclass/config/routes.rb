@@ -59,7 +59,6 @@ Hubclass::Application.routes.draw do
   namespace :api do
     resources :users do
       resources :groups do
-        get 'owned', on: :collection, action: :owned_groups
         resources :assignments
         resources :attachments
         resources :courses

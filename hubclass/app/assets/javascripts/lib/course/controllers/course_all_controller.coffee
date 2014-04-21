@@ -3,14 +3,9 @@ angular.module('Hust:course').controller 'CourseAllController', ['api', '$scope'
   $scope.groups = []
 
   api.index_groups (data) ->
-    groups_callback(data)
-
-  api.owned_of_courses (data) ->
-    groups_callback(data)
+    $scope.groups = $scope.groups.concat(data)
 
   $scope.enter_group = (group_id) ->
     $location.url('/group/'+group_id)
 
-  groups_callback = (data) ->
-    $scope.groups = $scope.groups.concat(data)
 ]
