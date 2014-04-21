@@ -1,1 +1,16 @@
 @import "base";
+
+.group {
+  .nav-tabs {
+    li {
+      & > a {
+        color: #000000 !important;
+      }
+      &.active > a {
+        color: @brand-primary !important;
+      }
+    }
+  }
+
+}
+

@@ -6,4 +6,16 @@ class Api::GroupsController < ApiController
     end
   end
 
+  def show
+    found?(@user = User.find(params[:user_id])) do
+      @group = @user.groups.find(params[:group_id])
+    end
+  end
+
+  def owned_groups
+    found?(@user = User.find(params[:user_id])) do
+      @groups = @user.owner_groups.order_by(:created_at.desc)
+    end
+  end
+
 end

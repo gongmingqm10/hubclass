@@ -4,6 +4,7 @@ class Note
 
   field :title, type: String
   field :content, type: String
+  field :share, type: Boolean, default: true
 
   belongs_to :owner, class_name: 'User', inverse_of: :notes
   belongs_to :group, class_name: 'Group'
