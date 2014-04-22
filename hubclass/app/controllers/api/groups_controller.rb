@@ -8,7 +8,7 @@ class Api::GroupsController < ApiController
 
   def show
     found?(@user = User.find(params[:user_id])) do
-      @group = @user.groups.find(params[:group_id])
+      @group = Group.find(params[:id])
     end
   end
 

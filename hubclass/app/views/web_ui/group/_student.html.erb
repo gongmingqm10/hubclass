@@ -6,14 +6,16 @@
       <th>学号</th>
       <th>班级</th>
       <th>赞</th>
+      <th>出勤率</th>
     </tr>
     </thead>
     <tbody>
-    <tr data-ng-repeat="group in groups">
-      <td>{{group.course.name}}</td>
-      <td>{{group.name}}</td>
-      <td>{{group.teacher.username}}</td>
-      <td><a data-ng-href="/course/{{group.id}}">进入</a></td>
+    <tr data-ng-repeat="student in group.members">
+      <td>{{student.username}}</td>
+      <td>{{student.user_number}}</td>
+      <td>{{student.branch}}</td>
+      <td><a data-ng-href="javascript:void(0);">0 赞</a></td>
+      <td>6/8</td>
     </tr>
     </tbody>
   </table>
