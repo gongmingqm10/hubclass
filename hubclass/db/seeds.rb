@@ -9,27 +9,27 @@
 admin = User.create([username: 'admin', user_number: '001', email: 'hubadmin@gmail.com', password: '123456', role: 'admin'])
 
 students1 = User.create([
-                        {username: '龚铭', user_number: 'u201015824', email: 'gongmingqm10@gmail.com', password: '123456', role: 'student'},
-                        {username: '邓万江', user_number: 'u201015818', email: 'wjdeng@gmail.com', password: '123456', role: 'student'},
-                        {username: '叶凯', user_number: 'u201015836', email: 'kaiye@gmail.com', password: '123456', role: 'student'},
-                        {username: '刘良良', user_number: 'u201010107', email: 'llliu@gmail.com', password: '123456', role: 'student'},
-                        {username: '梅诗进', user_number: 'u201010818', email: 'shijinm@gmail.com', password: '123456', role: 'student'},
+                        {username: '龚铭', user_number: 'u201015824', email: 'gongmingqm10@gmail.com', password: '123456', role: 'student', branch: '管理学院管实1001'},
+                        {username: '邓万江', user_number: 'u201015818', email: 'wjdeng@gmail.com', password: '123456', role: 'student', branch: '管理学院管实1001'},
+                        {username: '叶凯', user_number: 'u201015836', email: 'kaiye@gmail.com', password: '123456', role: 'student', branch: '管理学院管实1001'},
+                        {username: '刘良良', user_number: 'u201010107', email: 'llliu@gmail.com', password: '123456', role: 'student', branch: '管理学院管实1001'},
+                        {username: '梅诗进', user_number: 'u201010818', email: 'shijinm@gmail.com', password: '123456', role: 'student', branch: '管理学院管实1001'},
                       ])
 
 students2 = User.create([
-                            {username: '杜泽新', user_number: 'u201016049', email: 'zexindu@gmail.com', password: '123456', role: 'student'},
-                            {username: '黄振森', user_number: 'u201015863', email: 'zhensenw@gmail.com', password: '123456', role: 'student'},
-                            {username: '马凌寒', user_number: 'u201016077', email: 'linhanm@gmail.com', password: '123456', role: 'student'},
-                            {username: '邱冬', user_number: 'u201016082', email: 'dongq@gmail.com', password: '123456', role: 'student'},
-                            {username: '曾令东', user_number: 'u201016076', email: 'lingdongz@gmail.com', password: '123456', role: 'student'},
-                            {username: '曹超超', user_number: 'u201016073', email: 'chaochaoc@gmail.com', password: '123456', role: 'student'},
-                            {username: '王成', user_number: 'u201015822', email: 'chengwang@gmail.com', password: '123456', role: 'student'}
+                            {username: '杜泽新', user_number: 'u201016049', email: 'zexindu@gmail.com', password: '123456', role: 'student', branch: '管理学院信管1001'},
+                            {username: '黄振森', user_number: 'u201015863', email: 'zhensenw@gmail.com', password: '123456', role: 'student', branch: '管理学院信管1001'},
+                            {username: '马凌寒', user_number: 'u201016077', email: 'linhanm@gmail.com', password: '123456', role: 'student', branch: '管理学院信管1001'},
+                            {username: '邱冬', user_number: 'u201016082', email: 'dongq@gmail.com', password: '123456', role: 'student', branch: '管理学院信管1001'},
+                            {username: '曾令东', user_number: 'u201016076', email: 'lingdongz@gmail.com', password: '123456', role: 'student', branch: '管理学院信管1001'},
+                            {username: '曹超超', user_number: 'u201016073', email: 'chaochaoc@gmail.com', password: '123456', role: 'student', branch: '管理学院信管1001'},
+                            {username: '王成', user_number: 'u201015822', email: 'chengwang@gmail.com', password: '123456', role: 'student', branch: '管理学院信管1001'}
                         ])
 
 teachers = User.create([
-                        {username: '程海芳', user_number: '199710001', email: 'hfcheng@gmail.com', password: '123456', role: 'teacher'},
-                        {username: '马辉明', user_number: '199500002', email: 'hmma@gmail.com', password: '123456', role: 'teacher'},
-                        {username: '汪湫泓', user_number: '200601102', email: 'qhwang@gmail.com', password: '123456', role: 'teacher'}
+                        {username: '程海芳', user_number: '199710001', email: 'hfcheng@gmail.com', password: '123456', role: 'teacher', branch: '管理学院信管系'},
+                        {username: '马辉明', user_number: '199500002', email: 'hmma@gmail.com', password: '123456', role: 'teacher', branch: '管理学院信管系'},
+                        {username: '汪湫泓', user_number: '200601102', email: 'qhwang@gmail.com', password: '123456', role: 'teacher', branch: '管理学院财政系'}
                       ])
 
 courses = Course.create([

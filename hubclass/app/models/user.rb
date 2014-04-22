@@ -8,6 +8,7 @@ class User
   field :password_salt, type: String
   field :role, type: String
   field :user_number, type: String
+  field :branch, type: String
 
   attr_accessor :password
 

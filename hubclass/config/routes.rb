@@ -72,7 +72,13 @@ Hubclass::Application.routes.draw do
 
   get 'course', to: 'web_ui#course'
   get 'course/all', to: 'web_ui#course_all'
-  get 'group', to: 'web_ui#group_show'
+  get 'course/:group_id', to: 'web_ui#group_show'
+
+  get 'group/note', to: 'web_ui#group_note'
+  get 'group/student', to: 'web_ui#group_student'
+  get 'group/homework', to: 'web_ui#group_homework'
+  get 'group/signin', to: 'web_ui#group_signin'
+
 
   get 'attachment', to: 'web_ui#attachment'
 
