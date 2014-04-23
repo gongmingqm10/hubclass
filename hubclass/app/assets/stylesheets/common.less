@@ -29,7 +29,7 @@ div#wrap {
   & > .container {
     background-color: #ffffff;
     margin-top: 15px;
-    padding: 10px;
+    padding: 0 @margin-middle*2 @margin-large;
   }
 }
 
@@ -46,4 +46,19 @@ nav {
     background-color: transparent !important;
   }
 
+}
+
+#editor {
+  overflow:scroll;
+  max-height: 600px !important;
+  height: 350px !important;
+  padding: @margin-small;
+  margin: @margin-large 0;
+}
+
+div[data-role="editor-toolbar"] {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

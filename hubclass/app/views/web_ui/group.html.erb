@@ -6,13 +6,7 @@
 <div class="container" ng-controller="GroupController" data-ng-init="load_group('<%= @group_id %>')">
   <div class="group">
     <h1></h1>
-    <ul class="nav nav-tabs">
-      <li gm-activate-element="notes"><a href="javascript:void(0);" data-ng-click="group_tabs('notes')">笔记</a></li>
-      <li gm-activate-element="students"><a href="javascript:void(0);" data-ng-click="group_tabs('students')">学生</a></li>
-      <li gm-activate-element="homeworks"><a href="javascript:void(0);" data-ng-click="group_tabs('homeworks')">作业</a></li>
-      <li gm-activate-element="signin"><a href="javascript:void(0);" data-ng-click="group_tabs('signin')">点名</a></li>
-    </ul>
+    <div ng-view></div>
   </div>
-  <div ng-view></div>
 </div>
 

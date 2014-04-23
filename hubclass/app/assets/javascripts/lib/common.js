@@ -1,7 +1,9 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
+//= require jquery.hotkeys
 //= require bootstrap.min
+//= require bootstrap-wysiwyg
 //= require underscore
 //= require angular.min
 //= require angular-cookies.min

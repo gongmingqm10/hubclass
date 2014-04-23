@@ -51,20 +51,12 @@ class WebUiController < ApplicationController
     render 'group'
   end
 
-  def group_note
-    render partial: 'web_ui/group/note', layout: nil
+  def group_all
+    render partial: 'web_ui/group/all', layout: nil
   end
 
-  def group_student
-    render partial: 'web_ui/group/student', layout: nil
-  end
-
-  def group_homework
-    render partial: 'web_ui/group/homework', layout: nil
-  end
-
-  def group_signin
-    render partial: 'web_ui/group/signin', layout: nil
+  def note_new
+    render partial: 'web_ui/group/note_new', layout: nil
   end
 
   def assignment
