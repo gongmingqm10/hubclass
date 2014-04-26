@@ -62,6 +62,7 @@ Hubclass::Application.routes.draw do
         resources :assignments
         resources :attachments
         resources :courses
+        resources :notes
       end
     end
   end
