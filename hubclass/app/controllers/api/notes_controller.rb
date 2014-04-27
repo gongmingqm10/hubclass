@@ -1,9 +1,14 @@
 class Api::NotesController < ApiController
+
+  def index
+    found?(@group = Group.find(params[:group_id])) do
+      @notes = Note.where(group: @group)
+      return render status: :ok
+    end
+    render status: :not_found, json: {}
+  end
+
   def create
-    user_id = params[:user_id]
-    group_id = params[:group_id]
-    title = params[:title]
-    content = params[:content]
     found?(@group = Group.find(params[:group_id])) do
       @owner = User.find(params[:user_id])
       if @group.user_belongs_group(@owner)
@@ -19,4 +24,5 @@ class Api::NotesController < ApiController
     end
     render status: :bad_request, json: {}
   end
+
 end

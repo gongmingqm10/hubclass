@@ -1,4 +1,11 @@
 <div>
+  <p>课堂：{{group.name}}</p>
+  <br>
+  <p>课程：{{group.course.name}}</p>
+  <br>
+  <p>任课教师：{{group.teacher.username}}</p>
+</div>
+<div>
   <ul id="groupTabs" class="nav nav-tabs">
     <li data-ng-class="{active : current_tab == 'note'}"><a href="javascript:void(0);" data-ng-click="current_tab = 'note'">笔记</a></li>
     <li data-ng-class="{active : current_tab == 'student'}"><a href="javascript:void(0);" data-ng-click="current_tab = 'student'">学生</a></li>
