@@ -13,4 +13,12 @@ class Group
   has_many :notes, class_name: 'Note', inverse_of: :owner
   has_many :attachments, class_name: 'Attachment', inverse_of: :owner
 
+  def user_belongs_group(user)
+    if self.teacher == user || self.members.include?(user)
+      return true
+    else
+      return false
+    end
+  end
+
 end

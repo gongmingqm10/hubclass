@@ -9,6 +9,10 @@ class Api::GroupsController < ApiController
   def show
     found?(@user = User.find(params[:user_id])) do
       @group = Group.find(params[:id])
+      if @group.user_belongs_group(@user)
+        return render status: :ok
+      end
+      return render status: :forbidden, json: { response: 'You don\'t have permission to this group'}
     end
   end
 

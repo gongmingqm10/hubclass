@@ -56,7 +56,7 @@ class WebUiController < ApplicationController
   end
 
   def note_new
-    render partial: 'web_ui/group/note_new', layout: nil
+    render partial: 'web_ui/group/note/new', layout: nil
   end
 
   def assignment

@@ -5,4 +5,11 @@ angular.module('Hust:group').controller 'GroupNoteNewController', ['api', '$scop
     $('#content').val $('#editor').html()
   $scope.cancel = () ->
     $location.url('/all')
+  $scope.create_note = () ->
+    data =
+      title: $('#noteTitle').val()
+      content: $('#editor').html()
+    api.create_note $scope.group_id, data, (response, status) ->
+      $('#message').removeClass('hide')
+
 ]
