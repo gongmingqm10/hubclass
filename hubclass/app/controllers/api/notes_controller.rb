@@ -15,6 +15,7 @@ class Api::NotesController < ApiController
         valid?(@note = Note.create(
             title: params[:title],
             content: params[:content],
+            tags: params[:tags],
             owner: @owner,
             group: @group)
         ) do

@@ -1,8 +1,9 @@
-angular.module('Hust:group').controller 'GroupController', ['api', '$scope', (api, $scope) ->
+angular.module('Hust:group').controller 'GroupController', ['api', '$scope', '$location', (api, $scope, $location) ->
 
   $scope.load_group = (group_id) ->
     $scope.group_id = group_id
     api.find_group_by_id group_id, (data)->
       $scope.group = data
-
+  $scope.cancel = () ->
+    $location.url('/all')
 ]

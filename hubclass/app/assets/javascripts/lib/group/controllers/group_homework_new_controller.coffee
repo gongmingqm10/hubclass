@@ -1,6 +1,6 @@
-angular.module('Hust:group').controller 'GroupNoteNewController', ['api', '$scope', '$location', (api, $scope, $location) ->
+angular.module('Hust:group').controller 'GroupHomeworkNewController', ['api', '$scope', '$location', (api, $scope, $location) ->
   $('#editor').wysiwyg()
-  $scope.create_note = () ->
+  $scope.create_homework = () ->
     data =
       title: $('#noteTitle').val()
       content: $('#editor').html()
