@@ -20,6 +20,7 @@ class User
 
   has_many :owner_groups, class_name: 'Group', inverse_of: :teacher
   has_and_belongs_to_many :groups, class_name: 'Group', inverse_of: :members
+  has_many :assignments, class_name: 'Assignment', inverse_of: :author
   has_many :notes, class_name: 'Note'
   has_many :attachments, class_name: 'Attachment'
   embeds_many :comments, class_name: 'Comment'
