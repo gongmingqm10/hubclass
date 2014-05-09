@@ -8,8 +8,8 @@ class Assignment
 
   validates_presence_of :title, :expiration
 
-  belongs_to :group, class_name: 'Group'
   belongs_to :author, class_name: 'User', inverse_of: :assignments
+  belongs_to :owner_group, class_name: 'Group', inverse_of: :assignments
   embeds_one :workflow
 
 

@@ -5,7 +5,7 @@ class Course
   field :name, type: String
   field :abstract, type: String
 
-  has_many :group, class_name: 'Group'
+  has_many :groups, class_name: 'Group'
 
 
   validates_presence_of :name
