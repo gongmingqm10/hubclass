@@ -2,7 +2,7 @@ class Api::NotesController < ApiController
 
   def index
     found?(@group = Group.find(params[:group_id])) do
-      @notes = Note.where(group: @group)
+      @notes = Note.where(owner_group: @group)
       return render status: :ok
     end
     render status: :not_found, json: {}
@@ -17,7 +17,7 @@ class Api::NotesController < ApiController
             content: params[:content],
             tags: params[:tags],
             owner: @owner,
-            group: @group)
+            owner_group: @group)
         ) do
           return render status: :created
         end

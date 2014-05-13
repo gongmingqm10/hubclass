@@ -1,5 +1,4 @@
 collection @notes
-
 node (:id) { |n| n.id.to_s }
 attribute :title, :content, :share, :tags, :updated_at
 child(owner: :owner) do
