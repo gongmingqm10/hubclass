@@ -65,6 +65,7 @@ Hubclass::Application.routes.draw do
         resources :notes
       end
     end
+    post 'file-upload', to: 'files#create'
   end
 
   get 'login', to: 'web_ui#login'

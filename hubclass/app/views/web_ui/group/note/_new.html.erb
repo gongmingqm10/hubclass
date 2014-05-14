@@ -16,4 +16,13 @@
   <label for="noteTitle">标签</label>
   <input type="text" class="form-control" id="tags" placeholder="添加标签，空格隔开" name="tags">
 </div>
-
+<div class="form-group">
+  <label for="file">附件</label>
+  <span class="text-danger" id="file-validation-message"></span>
+  <input type="file" id="file" name="file">
+  <div class="progress progress-striped" id="progress">
+    <div class="progress-bar progress-bar-info" id="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+      <span id="percent">0%</span>
+    </div>
+  </div>
+</div>
