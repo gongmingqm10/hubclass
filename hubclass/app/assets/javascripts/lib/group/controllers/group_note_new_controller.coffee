@@ -41,6 +41,7 @@ before_send = (jqXHR) ->
   $("#progress").show()
   $("#bar").width('0%')
   $("#percent").text("0%")
+  $("#file-validation-message").text ''
 
 
 upload_attachment = ->

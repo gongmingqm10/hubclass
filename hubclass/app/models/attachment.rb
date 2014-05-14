@@ -7,7 +7,7 @@ class Attachment
   field :type, type: String
   field :size, type: Integer
 
-  belongs_to :owner, class_name: 'User', inverse_of: :notes
+  belongs_to :owner, class_name: 'User', inverse_of: :attachments
   belongs_to :owner_group, class_name: 'Group', inverse_of: :attachments
 
 end

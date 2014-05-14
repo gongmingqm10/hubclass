@@ -1,3 +1,4 @@
-object false
+object @attachment
 
-node(:url) {@url}
+attribute :filename, :size, :url
+node(:id) { |a| a.id.to_s }
