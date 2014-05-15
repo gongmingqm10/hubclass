@@ -19,6 +19,11 @@ class Api::NotesController < ApiController
             owner: @owner,
             owner_group: @group)
         ) do
+          params[:files].each do |file|
+            attachment = Attachment.find(file)
+            attachment.note = @note
+            attachment.save
+          end
           return render status: :created
         end
       end

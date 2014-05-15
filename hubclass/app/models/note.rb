@@ -10,5 +10,7 @@ class Note
   belongs_to :owner, class_name: 'User', inverse_of: :notes
   belongs_to :owner_group, class_name: 'Group', inverse_of: :notes
 
+  has_many :attachments, class_name: 'Attachment'
+
 
 end
