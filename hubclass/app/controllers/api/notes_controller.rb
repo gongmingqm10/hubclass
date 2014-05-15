@@ -2,7 +2,7 @@ class Api::NotesController < ApiController
 
   def index
     found?(@group = Group.find(params[:group_id])) do
-      @notes = Note.where(owner_group: @group)
+      @notes = Note.where(owner_group: @group).order_by(:updated_at.desc)
       return render status: :ok
     end
     render status: :not_found, json: {}

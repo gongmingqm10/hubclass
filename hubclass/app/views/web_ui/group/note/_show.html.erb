@@ -16,7 +16,7 @@
       <td><a href="javascript:void(0);" data-ng-click="show_note(note.id)">{{note.title}}</a></td>
       <td>{{note.owner.username}}</td>
       <td>
-        <p class="label label-info"> 标签 </p>
+        <span class="label label-info" data-ng-repeat="tag in note.tags"> {{tag}} </span>
       </td>
       <td><span class="icon icon-attach"></span></td>
       <td>{{note.updated_at}}</td>
