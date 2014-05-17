@@ -2,10 +2,11 @@ angular.module('Hust:group').controller 'GroupHomeworkNewController', ['api', '$
   $('#editor').wysiwyg()
   $scope.create_homework = () ->
     data =
-      title: $('#noteTitle').val()
+      title: $('#title').val()
       content: $('#editor').html()
-      tags: $('#tags').val().split(" ")
-    api.create_note $scope.group_id, data, (response, status) ->
+      expiration: $('#expireDate').val()
+    api.create_homework $scope.group_id, data, (response, status) ->
       $('#message').removeClass('hide')
+      console.log response
 
 ]

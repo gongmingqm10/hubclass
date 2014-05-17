@@ -59,7 +59,7 @@ Hubclass::Application.routes.draw do
   namespace :api do
     resources :users do
       resources :groups do
-        resources :assignments
+        resources :homeworks
         resources :attachments
         resources :courses
         resources :notes
