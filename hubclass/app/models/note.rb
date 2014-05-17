@@ -13,4 +13,10 @@ class Note
   has_many :attachments, class_name: 'Attachment'
 
 
+
+  def has_attachment?
+    !attachments.empty?
+  end
+
+
 end
