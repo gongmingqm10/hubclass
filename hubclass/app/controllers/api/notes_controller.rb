@@ -31,4 +31,15 @@ class Api::NotesController < ApiController
     render status: :bad_request, json: {}
   end
 
+  def show
+    found?(group = Group.find(params[:group_id])) do
+      user = User.find(params[:user_id])
+      if group.user_belongs_group(user)
+        @note = Note.find(params[:id])
+        return render status: :ok
+      end
+    end
+    return render status: :bad_request, json: {}
+  end
+
 end

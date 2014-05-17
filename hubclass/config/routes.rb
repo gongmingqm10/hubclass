@@ -79,6 +79,7 @@ Hubclass::Application.routes.draw do
   get 'group/all', to: 'web_ui#group_all'
 
   get 'note/new', to: 'web_ui#note_new'
+  get 'note/show/:note_id', to: 'web_ui#note_show'
   get 'homework/new', to: 'web_ui#homework_new'
 
 

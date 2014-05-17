@@ -59,6 +59,10 @@ class WebUiController < ApplicationController
     render partial: 'web_ui/group/note/new', layout: nil
   end
 
+  def note_show
+    render partial: 'web_ui/group/note/show', layout: nil
+  end
+
   def homework_new
     render partial: 'web_ui/group/homework/new', layout: nil
   end

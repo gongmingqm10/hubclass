@@ -1,26 +1,13 @@
-<button type="button" class="btn btn-primary" data-ng-click="redirect_note_new()">发布笔记</button>
-<br>
-<div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th>笔记</th>
-      <th>作者</th>
-      <th>标签</th>
-      <th>附件</th>
-      <th>发布时间</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr data-ng-repeat="note in notes">
-      <td><a href="javascript:void(0);" data-ng-click="show_note(note.id)">{{note.title}}</a></td>
-      <td>{{note.owner.username}}</td>
-      <td>
-        <span class="label label-info" data-ng-repeat="tag in note.tags"> {{tag}} </span>
-      </td>
-      <td><span class="icon icon-attach"></span></td>
-      <td>{{note.updated_at}}</td>
-    </tr>
-    </tbody>
-  </table>
+<h2 class="text-center">{{note.title}}</h2>
+<div>
+  <p class="text-center text-info"> {{note.author.username}}  发表于{{note.updated_at | date: 'yyyy-MM-dd'}}</p>
+  <span data-ng-repeat="tag in note.tags" class="icon icon-tags text-primary">{{tag}}</span>
 </div>
+<hr>
+<div gm-dynamic-compile="note.content"></div>
+<div data-ng-show="note.attachments">
+<hr>
+<p> 附件 </p>
+<a data-ng-repeat="attachment in note.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
+</div>
+<br>

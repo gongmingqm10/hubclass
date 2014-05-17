@@ -3,6 +3,7 @@ angular.module('Hust:group', ['Hust:common', 'ngRoute'])
     $routeProvider
     .when('/all', {templateUrl: '/group/all', controller: 'GroupAllController'})
     .when('/note/new', {templateUrl: '/note/new', controller: 'GroupNoteNewController'})
+    .when('/note/show/:note_id', {templateUrl: '/note/show/:note_id', controller: 'GroupNoteShowController'})
     .when('/homework/new', {templateUrl: '/homework/new', controller: 'GroupHomeworkNewController'})
     .otherwise(redirectTo: '/all')
   ]
