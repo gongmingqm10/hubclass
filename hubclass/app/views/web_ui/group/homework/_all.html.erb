@@ -1,1 +1,31 @@
 <button type="button" class="btn btn-primary" data-ng-click="redirect_homework_new()">布置作业</button>
+<hr>
+
+<div class="table-responsive">
+  <p>我布置的作业</p>
+  <table class="table table-hover">
+    <tbody>
+    <tr data-ng-repeat="homework in created_homeworks">
+      <td>
+        <a href="javascript:void(0);" data-ng-click="remark_homework(homework.id)">{{homework.title}}</a>
+      </td>
+      <td>{{homework.author.username}}</td>
+      <td>{{homework.expiration | date:'yyyy-MM-dd'}}前提交</td>
+      <td>{{homework.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <p>我要做的作业</p>
+  <table class="table table-hover">
+    <tbody>
+    <tr data-ng-repeat="homework in submit_homeworks">
+      <td>
+        <a href="javascript:void(0);" data-ng-click="submit_homework(homework.id)">{{homework.title}}</a>
+      </td>
+      <td>{{homework.author.username}}</td>
+      <td>{{homework.expiration | date:'yyyy-MM-dd'}}前提交</td>
+      <td>{{homework.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

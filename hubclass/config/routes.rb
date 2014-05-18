@@ -59,7 +59,10 @@ Hubclass::Application.routes.draw do
   namespace :api do
     resources :users do
       resources :groups do
-        resources :homeworks
+        resources :homeworks do
+          get 'create', on: :collection, action: :created_homeworks
+          get 'submit', on: :collection, action: :submit_homeworks
+        end
         resources :attachments
         resources :courses
         resources :notes
@@ -81,6 +84,8 @@ Hubclass::Application.routes.draw do
   get 'note/new', to: 'web_ui#note_new'
   get 'note/show/:note_id', to: 'web_ui#note_show'
   get 'homework/new', to: 'web_ui#homework_new'
+  get 'homework/remark/:homework_id', to: 'web_ui#homework_remark'
+  get 'homework/submit/:homework_id', to: 'web_ui#homework_submit'
 
 
   get 'attachment', to: 'web_ui#attachment'
