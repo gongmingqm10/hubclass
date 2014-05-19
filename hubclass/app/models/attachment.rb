@@ -9,6 +9,6 @@ class Attachment
 
   belongs_to :owner, class_name: 'User', inverse_of: :attachments
   belongs_to :owner_group, class_name: 'Group', inverse_of: :attachments
-  belongs_to :note, class_name: 'Note'
+  has_and_belongs_to_many :portfolios, class_name: 'Portfolio', inverse_of: :attachments
 
 end

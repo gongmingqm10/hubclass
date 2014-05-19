@@ -7,9 +7,9 @@ class Portfolio
 
   belongs_to :owner, class_name: 'User', inverse_of: :portfolios
   belongs_to :owner_group, class_name: 'Group', inverse_of: :portfolios
-  has_many :attachments, class_name: 'Attachment'
+  has_and_belongs_to_many :attachments, class_name: 'Attachment', inverse_of: :portfolios
 
   def has_attachment?
-    !attachments.empty?
+    attachments.any?
   end
 end

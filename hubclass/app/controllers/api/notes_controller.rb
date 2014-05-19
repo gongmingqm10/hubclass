@@ -14,13 +14,15 @@ class Api::NotesController < ApiController
           title: params[:title],
           content: params[:content],
           tags: params[:tags],
-          owner: @owner,
+          owner: @user,
           owner_group: @group)
       ) do
-        params[:files].each do |file|
-          attachment = Attachment.find(file)
-          attachment.note = @note
-          attachment.save
+        if params[:files]
+          params[:files].each do |file|
+            attachment = Attachment.find(file)
+            @note.attachments.push(attachment)
+          end
+          @note.save
         end
         return render status: :created
       end

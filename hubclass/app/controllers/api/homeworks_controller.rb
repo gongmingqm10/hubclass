@@ -19,7 +19,7 @@ class Api::HomeworksController < ApiController
 
   def created_homeworks
     user_access_group?(params[:group_id], params[:user_id]) do
-      @homeworks = Assignment.where(owner: @owner).and(owner_group: @group).order_by(:updated_at.desc)
+      @homeworks = Assignment.where(owner: @user).and(owner_group: @group).order_by(:updated_at.desc)
       return render status: :ok
     end
     return render status: :not_found, json: {}
@@ -27,8 +27,12 @@ class Api::HomeworksController < ApiController
 
   def submit_homeworks
     user_access_group?(params[:group_id], params[:user_id]) do
-      @homeworks = Assignment.where(owner_group: @group)
-      return render status: :ok
+      if @group.teacher == @user
+        return render status: :ok, json: {}
+      else
+        @homeworks = Assignment.where(owner_group: @group)
+        return render status: :ok
+      end
     end
     return render status: :not_found, json: {}
   end
