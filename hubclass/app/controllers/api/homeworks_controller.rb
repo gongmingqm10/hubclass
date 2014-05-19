@@ -5,7 +5,7 @@ class Api::HomeworksController < ApiController
           title: params[:title],
           content: params[:content],
           expiration: params[:expiration],
-          owner: @owner,
+          owner: @user,
           owner_group: @group,
           workflow: Workflow.new(
               state: 'initial'
@@ -42,7 +42,11 @@ class Api::HomeworksController < ApiController
   end
 
   def show_submit_homework
-    
+    user_access_group?(params[:group_id], params[:user_id]) do
+      @homework = Assignment.find(params[:id])
+      return render status: :ok
+    end
+    return render status: :not_found, json: {}
   end
 
 end

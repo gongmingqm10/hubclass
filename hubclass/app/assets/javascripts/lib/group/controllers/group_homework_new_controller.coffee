@@ -1,5 +1,4 @@
 angular.module('Hust:group').controller 'GroupHomeworkNewController', ['api', '$scope', '$location', (api, $scope, $location) ->
-  $('#editor').wysiwyg()
   $scope.create_homework = () ->
     data =
       title: $('#title').val()

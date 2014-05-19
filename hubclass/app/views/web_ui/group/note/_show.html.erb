@@ -1,13 +1,13 @@
-<h2 class="text-center">{{note.title}}</h2>
+<h2 class="text-center">{{portfolio.title}}</h2>
 <div>
-  <p class="text-center text-info"> {{note.author.username}}  发表于{{note.updated_at | date: 'yyyy-MM-dd'}}</p>
+  <p class="text-center text-info"> {{portfolio.author.username}}  发表于{{portfolio.updated_at | date: 'yyyy-MM-dd'}}</p>
   <span data-ng-repeat="tag in note.tags" class="icon icon-tags text-primary">{{tag}}</span>
 </div>
 <hr>
-<div gm-dynamic-compile="note.content"></div>
-<div data-ng-show="note.attachments">
+<div gm-dynamic-compile="portfolio.content"></div>
+<div data-ng-show="portfolio.attachments">
 <hr>
 <p> 附件 </p>
-<a data-ng-repeat="attachment in note.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
+<a data-ng-repeat="attachment in portfolio.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
 </div>
 <br>

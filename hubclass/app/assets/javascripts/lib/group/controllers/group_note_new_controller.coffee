@@ -1,5 +1,4 @@
 angular.module('Hust:group').controller 'GroupNoteNewController', ['api', '$scope', '$location', (api, $scope, $location) ->
-  $('#editor').wysiwyg()
 
   $scope.files = []
 

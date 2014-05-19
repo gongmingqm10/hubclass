@@ -23,7 +23,8 @@
         <a href="javascript:void(0);" data-ng-click="submit_homework(homework.id)">{{homework.title}}</a>
       </td>
       <td>{{homework.author.username}}</td>
-      <td>{{homework.expiration | date:'yyyy-MM-dd'}}前提交</td>
+      <td data-ng-show="homework.expiration">{{homework.expiration | date:'yyyy-MM-dd'}}前提交</td>
+      <td data-ng-hide="homework.expiration">无限期</td>
       <td>{{homework.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
     </tr>
     </tbody>

@@ -62,8 +62,8 @@ Hubclass::Application.routes.draw do
         resources :homeworks do
           get 'create', on: :collection, action: :created_homeworks
           get 'submit', on: :collection, action: :submit_homeworks
-          get '/:id/remark', on: :member, action: :show_remark_homework
-          get '/:id/submit', on: :member, action: :show_submit_homework
+          get 'remark', on: :member, action: :show_remark_homework
+          get 'submit', on: :member, action: :show_submit_homework
         end
         resources :attachments
         resources :courses
