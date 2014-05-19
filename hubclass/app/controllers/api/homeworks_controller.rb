@@ -32,4 +32,13 @@ class Api::HomeworksController < ApiController
     end
     return render status: :not_found, json: {}
   end
+
+  def show_remark_homework
+
+  end
+
+  def show_submit_homework
+    
+  end
+
 end
