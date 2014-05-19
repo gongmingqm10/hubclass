@@ -9,37 +9,31 @@ class Api::NotesController < ApiController
   end
 
   def create
-    found?(@group = Group.find(params[:group_id])) do
-      @owner = User.find(params[:user_id])
-      if @group.user_belongs_group(@owner)
-        valid?(@note = Note.create(
-            title: params[:title],
-            content: params[:content],
-            tags: params[:tags],
-            owner: @owner,
-            owner_group: @group)
-        ) do
-          params[:files].each do |file|
-            attachment = Attachment.find(file)
-            attachment.note = @note
-            attachment.save
-          end
-          return render status: :created
+    user_access_group?(params[:group_id], params[:user_id]) do
+      valid?(@note = Note.create(
+          title: params[:title],
+          content: params[:content],
+          tags: params[:tags],
+          owner: @owner,
+          owner_group: @group)
+      ) do
+        params[:files].each do |file|
+          attachment = Attachment.find(file)
+          attachment.note = @note
+          attachment.save
         end
+        return render status: :created
       end
     end
-    render status: :bad_request, json: {}
+    render status: :not_found, json: {}
   end
 
   def show
-    found?(group = Group.find(params[:group_id])) do
-      user = User.find(params[:user_id])
-      if group.user_belongs_group(user)
-        @note = Note.find(params[:id])
-        return render status: :ok
-      end
+    user_access_group?(params[:group_id], params[:user_id]) do
+      @note = Note.find(params[:id])
+      return render status: :ok
     end
-    return render status: :bad_request, json: {}
+    return render status: :not_found, json: {}
   end
 
 end

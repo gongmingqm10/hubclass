@@ -26,9 +26,21 @@ class ApiController < ActionController::Base
     end
   end
 
-  def current_user
-    session[:user_id]
+  def user_access_group?(group_id, user_id)
+    found?(@group = Group.find(group_id)) do
+      @user = User.find(user_id)
+      if @group.user_belongs_group(@user)
+        yield if block_given?
+        return true
+      else
+        render status: :not_found, json: {}
+        return false
+      end
+    end
   end
 
+  def current_user
+    User.find(session[:user_id])
+  end
 
 end

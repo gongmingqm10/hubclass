@@ -1,7 +1,7 @@
 class Api::FilesController < ApiController
   def create
     file_data = params[:file]
-    found?(@user = User.find(session['user_id'])) do
+    found?(@user = current_user()) do
       uploader = FileUploader.new
       uploader.store!(file_data)
       @url = uploader.url
@@ -16,6 +16,6 @@ class Api::FilesController < ApiController
         return render status: :created
       end
     end
-    return render status: :bad_request, json: {}
+    return render status: :not_found, json: {}
   end
 end
