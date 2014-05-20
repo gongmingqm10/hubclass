@@ -1,6 +1,14 @@
 angular.module('Hust:common').directive 'gmUploaderElement', ['$compile', ($compile)->
-  restrict: 'A'
-  replace: 'true'
+  restrict: 'AE'
+  template: '<label for="file">附件</label>'+
+            '<span class="text-danger" id="file-validation-message"></span>'+
+            '<input type="file" id="file" name="file">'+
+            '<div class="progress progress-striped" id="progress">'+
+              '<div class="progress-bar progress-bar-info" id="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">'+
+                 '<span id="percent">0%</span>'+
+              '</div>'+
+            '</div>'+
+            '<div id="file-container"></div>'
   link: (scope, element, attrs) ->
 
     input_file = element.find('#file')
