@@ -16,7 +16,7 @@
   <label for="noteTitle">标签</label>
   <input type="text" class="form-control" id="tags" placeholder="添加标签，空格隔开，不多于三个">
 </div>
-<div class="form-group">
+<div class="form-group" gm-uploader-element>
   <label for="file">附件</label>
   <span class="text-danger" id="file-validation-message"></span>
   <input type="file" id="file" name="file">
@@ -25,7 +25,5 @@
       <span id="percent">0%</span>
     </div>
   </div>
-  <div id="file-container">
-    <a data-ng-repeat="file in files" data-ng-href="{{file.url}}">{{file.filename}}</a>
-  </div>
+  <div id="file-container"></div>
 </div>
