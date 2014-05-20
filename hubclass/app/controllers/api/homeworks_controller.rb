@@ -19,7 +19,7 @@ class Api::HomeworksController < ApiController
 
   def get_created_homeworks
     user_access_group?(params[:group_id], params[:user_id]) do
-      @homeworks = Assignment.where(owner: @user).and(owner_group: @group).order_by(:updated_at.desc)
+      @homeworks = Assignment.where(owner: @user).and(is_answer: false).and(owner_group: @group).order_by(:updated_at.desc)
       return render status: :ok
     end
     return render status: :not_found, json: {}
@@ -30,7 +30,7 @@ class Api::HomeworksController < ApiController
       if @group.teacher == @user
         return render status: :ok, json: {}
       else
-        @homeworks = Assignment.where(owner_group: @group)
+        @homeworks = Assignment.where(owner_group: @group).and(is_answer: false).order_by(:updated_at.desc)
         return render status: :ok
       end
     end
@@ -53,6 +53,7 @@ class Api::HomeworksController < ApiController
     user_access_group?(params[:group_id], params[:user_id]) do
       valid?(@answer = Assignment.create(
           content: params[:content],
+          is_answer: true,
           owner: @user,
           owner_group: @group,
           workflow: Workflow.new(
