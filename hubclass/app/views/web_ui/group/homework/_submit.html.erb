@@ -1,6 +1,15 @@
+<div class="alert alert-success alert-dismissable hide" id="message">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  作业提交成功，<a href="javascript:void(0);" data-ng-click="redirect_tab('homework')">返回作业</a>
+</div>
+<div class="head-group">
+  <button type="button" class="btn btn-primary pull-right" data-ng-click="submit_homework()">提交</button>
+  <button type="button" class="btn btn-default pull-right" data-ng-click="redirect_tab('homework')">取消</button>
+</div>
 <%= render :partial => 'web_ui/group/note/show' %>
 <div>
   <hr>
   <p>答案</p>
   <%= render :partial => 'web_ui/shared/editor' %>
+  <div class="form-group" gm-uploader-element></div>
 </div>

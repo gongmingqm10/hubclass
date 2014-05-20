@@ -60,8 +60,9 @@ Hubclass::Application.routes.draw do
     resources :users do
       resources :groups do
         resources :homeworks do
-          get 'create', on: :collection, action: :created_homeworks
-          get 'submit', on: :collection, action: :submit_homeworks
+          get 'create', on: :collection, action: :get_created_homeworks
+          get 'submit', on: :collection, action: :get_todo_homeworks
+          post 'submit', action: :submit_homework
           get 'remark', on: :member, action: :show_remark_homework
           get 'submit', on: :member, action: :show_submit_homework
         end
