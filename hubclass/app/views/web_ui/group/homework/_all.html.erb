@@ -2,19 +2,32 @@
 <hr>
 
 <div class="table-responsive">
+
   <p>我布置的作业</p>
-  <table class="table table-hover">
-    <tbody>
-    <tr data-ng-repeat="homework in created_homeworks">
-      <td>
-        <a href="javascript:void(0);" data-ng-click="remark_homework(homework.id)">{{homework.title}}</a>
-      </td>
-      <td>{{homework.author.username}}</td>
-      <td>{{homework.expiration | date:'yyyy-MM-dd'}}前提交</td>
-      <td>{{homework.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
-    </tr>
-    </tbody>
-  </table>
+
+  <div class="panel panel-default" data-ng-repeat="homework in created_homeworks">
+    <div class="panel-heading">
+      <p class="panel-title">
+        <a data-toggle="collapse" data-target="#{{homework.id}}" data-parent="#accordion">
+          {{homework.title}}
+        </a>
+        {{homework.participants}}/{{homework.group.members_size}}
+        截止日期：{{homework.expiration | date:'yyyy-MM-dd'}}
+        <a href="javascript:void(0);">查看详情</a>
+      </p>
+    </div>
+    <div id="{{homework.id}}" class="panel-collapse collapse">
+      <div class="panel-body">
+        <table class="table table-hover">
+          <tr data-ng-repeat="member in homework.group.members">
+            <td>{{member.username}}</td>
+            <td>显示当前状态</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <p>我要做的作业</p>
   <table class="table table-hover">
     <tbody>
@@ -33,4 +46,6 @@
     </tr>
     </tbody>
   </table>
+
+
 </div>
