@@ -85,6 +85,12 @@
       "src": "fontawesome"
     },
     {
+      "uid": "41087bc74d4b20b55059c60a33bf4008",
+      "css": "edit",
+      "code": 59433,
+      "src": "fontawesome"
+    },
+    {
       "uid": "c08a1cde48d96cba21d8c05fa7d7feb1",
       "css": "doc-text-inv",
       "code": 59407,
@@ -227,6 +233,12 @@
       "css": "book",
       "code": 59404,
       "src": "fontawesome"
+    },
+    {
+      "uid": "25fc99a30fecc4021fdcae5fff5ba9ac",
+      "css": "eye",
+      "code": 59432,
+      "src": "entypo"
     },
     {
       "uid": "2d76f2c8d13be40694ecadfea7fb83c3",

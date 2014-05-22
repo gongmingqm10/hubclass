@@ -8,7 +8,7 @@ class Api::HomeworksController < ApiController
           owner: @user,
           owner_group: @group,
           workflow: Workflow.new(
-              state: 'created'
+              state: 'preparation'
           )
       )) do
         return render status: :created, json: {response: 'Homework created successfully'}

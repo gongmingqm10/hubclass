@@ -20,7 +20,11 @@
     <tbody>
     <tr data-ng-repeat="homework in submit_homeworks">
       <td>
-        <a href="javascript:void(0);" data-ng-click="submit_homework(homework.id)">{{homework.title}}</a>
+        <a href="javascript:void(0);" data-ng-click="submit_homework(homework.id)">
+          {{homework.title}}
+          <span class="icon icon-eye" data-ng-hide="homework.submittable"></span>
+          <span class="icon icon-edit" data-ng-show="homework.submittable"></span>
+        </a>
       </td>
       <td>{{homework.author.username}}</td>
       <td data-ng-show="homework.expiration">{{homework.expiration | date:'yyyy-MM-dd'}}前提交</td>
