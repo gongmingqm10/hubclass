@@ -44,6 +44,10 @@ class Api::HomeworksController < ApiController
   def show_submit_homework
     user_access_group?(params[:group_id], params[:user_id]) do
       @homework = Assignment.find(params[:id])
+      answer_id = @homework.workflow.participants[session[:user_id]]
+      if answer_id
+        @answer = Assignment.find(answer_id)
+      end
       return render status: :ok
     end
     return render status: :not_found, json: {}

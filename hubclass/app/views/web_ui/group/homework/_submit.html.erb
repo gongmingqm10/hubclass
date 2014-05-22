@@ -7,9 +7,17 @@
   <button type="button" class="btn btn-default pull-right" data-ng-click="redirect_tab('homework')">取消</button>
 </div>
 <%= render :partial => 'web_ui/group/note/show' %>
-<div>
-  <hr>
-  <p>答案</p>
+
+<hr>
+<p>答案</p>
+<div data-ng-hide="portfolio.assignment">
   <%= render :partial => 'web_ui/shared/editor' %>
   <div class="form-group" gm-uploader-element></div>
 </div>
+<div data-ng-show="portfolio.assignment">
+  <div gm-dynamic-compile="portfolio.assignment.content"></div>
+  <div data-ng-show="portfolio.assignment.attachments">
+    <a data-ng-repeat="attachment in portfolio.assignment.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
+  </div>
+</div>
+<hr>
