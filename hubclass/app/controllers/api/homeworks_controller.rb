@@ -51,6 +51,20 @@ class Api::HomeworksController < ApiController
   end
 
   def show_remark_homework
+    submitter_id = params[:submitter_id]
+    user_access_group?(params[:group_id], params[:user_id]) do
+      @homework = Assignment.find(params[:id])
+      @status = "preparation"
+      if answer_id = @homework.workflow.participants[submitter_id]
+        @status = "remark"
+        @answer = Assignment.find(answer_id)
+        @status = "finish" if @answer.remark
+      end
+      return render status: :ok
+    end
+    return render status: :not_found, json: {}
+
+
 
   end
 
@@ -65,6 +79,8 @@ class Api::HomeworksController < ApiController
     end
     return render status: :not_found, json: {}
   end
+
+  #TODO submit attachment not show in the preview page!!
 
   def submit_homework
     user_access_group?(params[:group_id], params[:user_id]) do
@@ -91,6 +107,20 @@ class Api::HomeworksController < ApiController
       end
     end
     render status: :not_found, json: {}
+  end
+
+  def remark_submit
+    user_access_group?(params[:group_id], params[:user_id]) do
+      answer = Assignment.find(params[:homework_id])
+      answer.remark = Remark.new(
+          mark: params[:mark],
+          detail: params[:detail]
+      )
+      answer.workflow.state = 'finish'
+      answer.save!
+      return render status: :ok, json: {response: 'success remark this homework'}
+    end
+    return render status: :not_found, json: {}
   end
 
 end

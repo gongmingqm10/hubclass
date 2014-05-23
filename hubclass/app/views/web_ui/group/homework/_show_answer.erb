@@ -1,0 +1,4 @@
+<div gm-dynamic-compile="portfolio.answer.content"></div>
+<div data-ng-show="portfolio.answer.attachments">
+  <a data-ng-repeat="attachment in portfolio.answer.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
+</div>

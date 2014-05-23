@@ -1,1 +1,33 @@
-<p>show the remark page.</p>
+<div class="alert alert-success alert-dismissable hide" id="message">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  作业评分成功，<a href="javascript:void(0);" data-ng-click="redirect_tab('homework')">返回作业</a>
+</div>
+<div class="head-group">
+  <button type="button" data-ng-show="portfolio.status == 'remark'" class="btn btn-primary pull-right" data-ng-click="remark_homework()">提交</button>
+  <button type="button" class="btn btn-default pull-right" data-ng-click="redirect_tab('homework')">返回</button>
+</div>
+<%= render :partial => 'web_ui/group/note/show' %>
+
+<div data-ng-show="portfolio.status != 'preparation'">
+  <hr>
+  <p>答案</p>
+  <%= render :partial => 'web_ui/group/homework/show_answer' %>
+</div>
+<div data-ng-switch="portfolio.status">
+  <div data-ng-switch-when="remark">
+    <hr>
+    <h5>教师评分</h5>
+    <div class="form-group">
+      <label for="mark">分数等级</label>
+      <input type="email" class="form-control" required id="mark" placeholder="输入分数">
+    </div>
+    <div class="form-group">
+      <label for="detail">评语</label>
+      <textarea class="form-control" rows="4" id="detail" placeholder="输入评语"></textarea>
+    </div>
+  </div>
+  <div data-ng-switch-when="finish">
+    <hr>
+    <%= render :partial => 'web_ui/group/homework/show_remark' %>
+  </div>
+</div>

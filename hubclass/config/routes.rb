@@ -63,7 +63,8 @@ Hubclass::Application.routes.draw do
           get 'create', on: :collection, action: :get_created_homeworks
           get 'submit', on: :collection, action: :get_todo_homeworks
           post 'submit', action: :submit_homework
-          get 'remark', on: :member, action: :show_remark_homework
+          get 'remark/:submitter_id', on: :member, action: :show_remark_homework
+          post 'remark', action: :remark_submit
           get 'submit', on: :member, action: :show_submit_homework
         end
         resources :attachments
@@ -88,8 +89,8 @@ Hubclass::Application.routes.draw do
   get 'note/show/:note_id', to: 'web_ui#note_show'
 
   get 'homework/new', to: 'web_ui#homework_new'
-  get 'homework/remark/:homework_id', to: 'web_ui#homework_remark'
-  get 'homework/submit/:homework_id', to: 'web_ui#homework_submit'
+  get 'homework/:homework_id/remark/:submitter_id', to: 'web_ui#homework_remark'
+  get 'homework/:homework_id/submit', to: 'web_ui#homework_submit'
   get 'homework/:id', to: 'web_ui#homework_show_origin'
 
   get 'attachment', to: 'web_ui#attachment'

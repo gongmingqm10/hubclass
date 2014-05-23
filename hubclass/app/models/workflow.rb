@@ -6,7 +6,7 @@ class Workflow
   field :participants, type: Hash, default: {}
 
 
-  validates_inclusion_of :state, in: %w(preparation remark preview)
+  validates_inclusion_of :state, in: %w(preparation remark finish)
 
   embedded_in :assignment
 

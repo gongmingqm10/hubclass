@@ -9,5 +9,4 @@ angular.module('Hust:group').controller 'GroupHomeworkSubmitController', ['api',
       files: $scope.files if $scope.files
     api.submit_homework $scope.group_id, $routeParams.homework_id, send_data, (response) ->
       $('#message').removeClass('hide')
-      console.log response
 ]
