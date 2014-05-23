@@ -80,8 +80,6 @@ class Api::HomeworksController < ApiController
     return render status: :not_found, json: {}
   end
 
-  #TODO submit attachment not show in the preview page!!
-
   def submit_homework
     user_access_group?(params[:group_id], params[:user_id]) do
       valid?(@answer = Assignment.create(

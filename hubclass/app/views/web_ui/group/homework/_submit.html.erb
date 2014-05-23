@@ -20,7 +20,7 @@
     </div>
     <div data-ng-switch-when="true">
       <%= render :partial => 'web_ui/shared/editor' %>
-      <div class="form-group" gm-uploader-element></div>
     </div>
 </div>
+<div class="form-group" gm-uploader-element data-ng-show="portfolio.answer == null"></div>
 <hr>

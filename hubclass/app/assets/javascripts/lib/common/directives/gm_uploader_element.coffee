@@ -1,5 +1,6 @@
 angular.module('Hust:common').directive 'gmUploaderElement', ['$compile', ($compile)->
-  restrict: 'AE'
+  restrict: 'A'
+  replace: false
   template: '<label for="file">附件</label>'+
             '<span class="text-danger" id="file-validation-message"></span>'+
             '<input type="file" id="file" name="file">'+
