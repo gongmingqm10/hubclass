@@ -10,14 +10,16 @@
 
 <hr>
 <p>答案</p>
-<div data-ng-hide="portfolio.assignment">
-  <%= render :partial => 'web_ui/shared/editor' %>
-  <div class="form-group" gm-uploader-element></div>
-</div>
-<div data-ng-show="portfolio.assignment">
-  <div gm-dynamic-compile="portfolio.assignment.content"></div>
-  <div data-ng-show="portfolio.assignment.attachments">
-    <a data-ng-repeat="attachment in portfolio.assignment.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
-  </div>
+<div data-ng-switch="portfolio.assignment">
+    <div data-ng-switch-when="true">
+      <div gm-dynamic-compile="portfolio.assignment.content"></div>
+      <div data-ng-show="portfolio.assignment.attachments">
+        <a data-ng-repeat="attachment in portfolio.assignment.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
+      </div>
+    </div>
+    <div data-ng-switch-when="false">
+      <%= render :partial => 'web_ui/shared/editor' %>
+      <div class="form-group" gm-uploader-element></div>
+    </div>
 </div>
 <hr>

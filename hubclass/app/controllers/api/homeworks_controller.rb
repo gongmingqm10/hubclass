@@ -1,4 +1,5 @@
 class Api::HomeworksController < ApiController
+
   def create
     user_access_group?(params[:group_id], params[:user_id]) do
       valid?(@assignment = Assignment.create(
@@ -11,6 +12,10 @@ class Api::HomeworksController < ApiController
               state: 'preparation'
           )
       )) do
+        @group.members.each do |member|
+          @assignment.workflow.participants[member.id.to_s] = nil
+        end
+        @assignment.save!
         return render status: :created, json: {response: 'Homework created successfully'}
       end
     end
@@ -28,7 +33,7 @@ class Api::HomeworksController < ApiController
   def get_todo_homeworks
     user_access_group?(params[:group_id], params[:user_id]) do
       if @group.teacher == @user
-        return render status: :ok, json: {}
+        return render status: :ok, json: []
       else
         @homeworks = Assignment.where(owner_group: @group).and(is_answer: false).order_by(:updated_at.desc)
         return render status: :ok
