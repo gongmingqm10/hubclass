@@ -86,10 +86,11 @@ Hubclass::Application.routes.draw do
 
   get 'note/new', to: 'web_ui#note_new'
   get 'note/show/:note_id', to: 'web_ui#note_show'
+
   get 'homework/new', to: 'web_ui#homework_new'
   get 'homework/remark/:homework_id', to: 'web_ui#homework_remark'
   get 'homework/submit/:homework_id', to: 'web_ui#homework_submit'
-
+  get 'homework/:id', to: 'web_ui#homework_show_origin'
 
   get 'attachment', to: 'web_ui#attachment'
 

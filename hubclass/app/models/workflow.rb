@@ -12,10 +12,11 @@ class Workflow
 
   #TODO to recalculate the submit number!!
   def submit_number
-    participants.inject(0) do |result, (user_id, homework_id)|
-      result ||= 0
-      result = result + 1 if homework_id
+    result = 0
+    participants.each_value do |value|
+      result = result + 1 if value
     end
+    result
   end
 
   def operate_homework(user_id)

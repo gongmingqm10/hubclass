@@ -12,6 +12,9 @@ angular.module('Hust:group').controller 'GroupAllController', ['api', '$scope', 
     $location.url('/homework/remark/'+homework_id)
   $scope.submit_homework = (homework_id) ->
     $location.url('/homework/submit/'+homework_id)
+  $scope.show_origin_homework = (homework_id, event) ->
+    event.stopPropagation
+    $location.url('/homework/' + homework_id )
   api.index_notes $scope.group_id, (data) ->
     $scope.notes = data
   api.index_created_homeworks $scope.group_id, (data) ->

@@ -6,8 +6,11 @@
 <hr>
 <div gm-dynamic-compile="portfolio.content"></div>
 <div data-ng-show="portfolio.attachments">
-<hr>
-<p> 附件 </p>
-<a data-ng-repeat="attachment in portfolio.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
+    <hr>
+    <p> 附件 </p>
+    <a data-ng-repeat="attachment in portfolio.attachments" data-ng-href="{{attachment.url}}"><span class="icon icon-attach"></span>{{attachment.filename}}</a>
+</div>
+<div data-ng-show="portfolio.expiration">
+  截止日期：{{portfolio.expiration | date:'yyyy-MM-dd'}}
 </div>
 <br>

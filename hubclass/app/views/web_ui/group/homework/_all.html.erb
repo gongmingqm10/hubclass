@@ -5,15 +5,13 @@
 
   <p data-ng-show="created_homeworks">我布置的作业</p>
   <div class="panel panel-default" data-ng-repeat="homework in created_homeworks">
-    <div class="panel-heading">
-      <p class="panel-title">
-        <a data-toggle="collapse" data-target="#{{homework.id}}" data-parent="#accordion">
-          {{homework.title}}
-        </a>
-        {{homework.submit_number}}/{{homework.members_size}}
-        截止日期：{{homework.expiration | date:'yyyy-MM-dd'}}
-        <a href="javascript:void(0);">查看详情</a>
-      </p>
+    <div class="panel-heading" data-toggle="collapse" data-target="#{{homework.id}}" data-parent="#accordion">
+      <div class="panel-title">
+        <span class="title">{{homework.title}}</span>
+        <span>{{homework.submit_number}}/{{homework.members_size}}</span>
+        <span data-ng-show="homework.expiration">截止日期：{{homework.expiration | date:'yyyy-MM-dd'}}</span>
+        <a class="title-href" data-ng-click="show_origin_homework(homework.id, $event)">查看内容<span class="icon icon-eye"></span></a>
+      </div>
     </div>
     <div id="{{homework.id}}" class="panel-collapse collapse">
       <div class="panel-body">

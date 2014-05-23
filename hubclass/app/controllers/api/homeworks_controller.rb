@@ -22,6 +22,14 @@ class Api::HomeworksController < ApiController
     return render status: :not_found, json: {response: 'Don\'t have permission to this group'}
   end
 
+  def show
+    user_access_group?(params[:group_id], params[:user_id]) do
+      @homework = Assignment.find(params[:id])
+      return render status: :ok
+    end
+    return render status: :not_found, json: {}
+  end
+
   def get_created_homeworks
     user_access_group?(params[:group_id], params[:user_id]) do
       @homeworks = Assignment.where(owner: @user).and(is_answer: false).and(owner_group: @group).order_by(:updated_at.desc)

@@ -28,6 +28,9 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
   show_submit_homework: (group_id, homework_id, handler) ->
     $http.get("/api/users/#{_current_user.id}/groups/#{group_id}/homeworks/#{homework_id}/submit").success(handler)
 
+  show_origin_homework: (group_id, homework_id, handler) ->
+    $http.get("/api/users/#{_current_user.id}/groups/#{group_id}/homeworks/#{homework_id}").success(handler)
+
   submit_homework: (group_id, homework_id, data, handler) ->
     $http.post("/api/users/#{_current_user.id}/groups/#{group_id}/homeworks/#{homework_id}/submit", data).success(handler)
 
