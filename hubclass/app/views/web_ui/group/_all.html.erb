@@ -8,15 +8,13 @@
 <div>
   <ul id="groupTabs" class="nav nav-tabs">
     <li data-ng-class="{active : is_current_tab('note')}"><a href="javascript:void(0);" data-ng-click="current_tab = 'note'">笔记</a></li>
-    <li data-ng-class="{active : is_current_tab('student')}"><a href="javascript:void(0);" data-ng-click="current_tab = 'student'">学生</a></li>
     <li data-ng-class="{active : is_current_tab('homework')}"><a href="javascript:void(0);" data-ng-click="current_tab = 'homework'">作业</a></li>
-    <li data-ng-class="{active : is_current_tab('signin')}"><a href="javascript:void(0);" data-ng-click="current_tab = 'signin'">点名</a></li>
+    <li data-ng-class="{active : is_current_tab('student')}"><a href="javascript:void(0);" data-ng-click="current_tab = 'student'">学生</a></li>
   </ul>
   <div class="tab-content">
     <div data-ng-show="is_current_tab('note')"><%= render :partial => 'web_ui/group/note/all' %></div>
-    <div data-ng-show="is_current_tab('student')"><%= render :partial => 'web_ui/group/student' %></div>
     <div data-ng-show="is_current_tab('homework')"><%= render :partial => 'web_ui/group/homework/all' %></div>
-    <div data-ng-show="is_current_tab('signin')"><%= render :partial => 'web_ui/group/signin' %></div>
+    <div data-ng-show="is_current_tab('student')"><%= render :partial => 'web_ui/group/student' %></div>
   </div>
 
 </div>
