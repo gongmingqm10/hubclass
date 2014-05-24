@@ -4,6 +4,7 @@ node(:group_id) { |g| g.id.to_s }
 child(:members => :members) do
     node(:user_id) { |m| m.id.to_s }
     attribute :username, :user_number, :branch
+    node(:record) { |m| get_record(@group, m)}
 end
 child(:teacher => :teacher) do
     node(:user_id) { |t| t.id.to_s }

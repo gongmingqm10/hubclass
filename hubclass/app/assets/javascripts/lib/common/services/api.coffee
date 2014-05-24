@@ -43,4 +43,9 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
   create_homework: (group_id, data, handler) ->
     $http.post("/api/users/#{_current_user.id}/groups/#{group_id}/homeworks", data).success(handler)
 
+  absent_student: (group_id, student_id, handler) ->
+    $http.put("/api/users/#{_current_user.id}/groups/#{group_id}/absent/#{student_id}").success(handler)
+
+  vote_student: (group_id, student_id, handler) ->
+    $http.put("/api/users/#{_current_user.id}/groups/#{group_id}/vote/#{student_id}").success(handler)
 ]

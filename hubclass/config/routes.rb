@@ -59,6 +59,8 @@ Hubclass::Application.routes.draw do
   namespace :api do
     resources :users do
       resources :groups do
+        put 'absent/:student_id', action: :absent_student
+        put 'vote/:student_id', action: :vote_student
         resources :homeworks do
           get 'create', on: :collection, action: :get_created_homeworks
           get 'submit', on: :collection, action: :get_todo_homeworks

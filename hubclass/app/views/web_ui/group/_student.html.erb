@@ -5,8 +5,8 @@
       <th>姓名</th>
       <th>学号</th>
       <th>班级</th>
-      <th>赞</th>
-      <th>出勤率</th>
+      <th>点赞</th>
+      <th>缺勤</th>
     </tr>
     </thead>
     <tbody>
@@ -14,8 +14,8 @@
       <td>{{student.username}}</td>
       <td>{{student.user_number}}</td>
       <td>{{student.branch}}</td>
-      <td><a data-ng-href="javascript:void(0);">0 赞</a></td>
-      <td>6/8</td>
+      <td><a href="javascript:void(0);" data-ng-click="vote_student(student.user_id, $event)">{{student.record.vote}}</a></td>
+      <td><a href="javascript:void(0);" data-ng-click="absent_student(student.user_id, $event)">{{student.record.absence}}</a></td>
     </tr>
     </tbody>
   </table>
