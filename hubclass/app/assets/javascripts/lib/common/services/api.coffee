@@ -48,4 +48,7 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
 
   vote_student: (group_id, student_id, handler) ->
     $http.put("/api/users/#{_current_user.id}/groups/#{group_id}/vote/#{student_id}").success(handler)
+
+  uploaded_attachments: (handler) ->
+    $http.get("/api/users/#{_current_user.id}/attachments/uploaded").success(handler)
 ]

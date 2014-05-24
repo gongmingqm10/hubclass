@@ -4,5 +4,24 @@
 <% end %>
 
 <div class="container" ng-controller="AttachmentController">
-  <p>welcome to attachment page.</p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>附件</th>
+        <th>大小</th>
+        <th>上传时间</th>
+        <th>下载</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr data-ng-repeat="attachment in attachments">
+        <td>{{attachment.filename}}</td>
+        <td>{{attachment.size | bytes}}</td>
+        <td>{{attachment.updated_at | date:'yyyy-MM-dd'}}</td>
+        <td><a data-ng-href="{{attachment.url}}" target="_blank">下载</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

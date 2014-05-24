@@ -69,12 +69,14 @@ Hubclass::Application.routes.draw do
           post 'remark', action: :remark_submit
           get 'submit', on: :member, action: :show_submit_homework
         end
-        resources :attachments
         resources :courses
         resources :notes
       end
+      resources :attachments do
+        get 'uploaded', on: :collection, action: :uploaded
+      end
     end
-    post 'file-upload', to: 'files#create'
+    post 'file-upload', to: 'attachments#create'
   end
 
   get 'login', to: 'web_ui#login'

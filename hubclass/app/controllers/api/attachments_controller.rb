@@ -1,4 +1,5 @@
-class Api::FilesController < ApiController
+class Api::AttachmentsController < ApiController
+
   def create
     file_data = params[:file]
     found?(@user = current_user()) do
@@ -18,4 +19,11 @@ class Api::FilesController < ApiController
     end
     return render status: :not_found, json: {}
   end
+
+  def uploaded
+    found?(@user = current_user()) do
+      @attachments = Attachment.where(owner: @user).order_by(:updated_at.desc)
+    end
+  end
+
 end

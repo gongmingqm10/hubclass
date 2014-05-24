@@ -12,3 +12,4 @@
 //= require_directory ./common/services
 //= require_directory ./common/controllers
 //= require_directory ./common/directives
+// = require_directory ./common/filters
