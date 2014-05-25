@@ -13,7 +13,7 @@ class Api::HomeworksController < ApiController
           )
       )) do
         @group.members.each do |member|
-          @assignment.workflow.participants[member.id.to_s] = nil
+          @assignment.workflow.participants[member.id.to_s] = {}
         end
         @assignment.save!
         return render status: :created, json: {response: 'Homework created successfully'}
@@ -120,5 +120,12 @@ class Api::HomeworksController < ApiController
     end
     return render status: :not_found, json: {}
   end
-
+  #TODO modify this method!!
+  def all
+    found?(@user= User.find(params[:user_id])) do
+      #@homeworks = Assignment.where(is_answer: false).and("workflow.participant.#{params[:user_id]}".nil? => false).order_by(:expiration.desc)
+      return render status: :ok
+    end
+    return render status: :not_found, json: {}
+  end
 end

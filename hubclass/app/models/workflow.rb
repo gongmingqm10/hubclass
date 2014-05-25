@@ -10,7 +10,6 @@ class Workflow
 
   embedded_in :assignment
 
-  #TODO to recalculate the submit number!!
   def submit_number
     result = 0
     participants.each_value do |value|
@@ -44,7 +43,9 @@ class Workflow
   end
 
   def submittable?(user_id)
-    if participants[user_id] && Assignment.find(participants[user_id]).workflow.state != 'preparation'
+    if participants[user_id].present? &&
+        Assignment.find(participants[user_id]).workflow &&
+        Assignment.find(participants[user_id]).workflow.state != 'preparation'
       false
     else
       true
