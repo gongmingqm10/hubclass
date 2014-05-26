@@ -1,15 +1,15 @@
 angular.module('Hust:assignment').controller 'AssignmentController', ['api', '$scope', '$location', (api, $scope, $location) ->
-  api.all_todo_homeworks (data) ->
-    $scope.submit_homeworks = data
-  api.all_created_homeworks (data) ->
-    $scope.created_homeworks = data
 
-  $scope.remark_homework = (homework_id, user_id) ->
-      $location.url("/homework/#{homework_id}/remark/#{user_id}")
-  $scope.submit_homework = (homework_id) ->
+  $scope.remark_homework = (group_id, homework_id, user_id) ->
+    $scope.group_id = group_id
+    $location.url("/homework/#{homework_id}/remark/#{user_id}")
+  $scope.submit_homework = (group_id, homework_id) ->
+    $scope.group_id = group_id
     $location.url("/homework/#{homework_id}/submit")
-  $scope.show_origin_homework = (homework_id, event) ->
+  $scope.show_origin_homework = (group_id, homework_id, event) ->
     event.stopPropagation
+    $scope.group_id = group_id
     $location.url('/homework/' + homework_id )
-
+  $scope.redirect_tab = (tab) ->
+    $location.url('/')
 ]

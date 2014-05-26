@@ -68,19 +68,23 @@ class WebUiController < ApplicationController
   end
 
   def homework_remark
-    render partial: 'web_ui/group/homework/remark', layout: nil
+    render partial: 'web_ui/shared/homework/remark', layout: nil
   end
 
   def homework_submit
-    render partial: 'web_ui/group/homework/submit', layout: nil
+    render partial: 'web_ui/shared/homework/submit', layout: nil
   end
 
   def homework_show_origin
-    render partial: 'web_ui/group/homework/show', layout: nil
+    render partial: 'web_ui/shared/homework/show', layout: nil
   end
 
   def assignment
     render 'assignment'
+  end
+
+  def assignment_all
+    render partial: 'web_ui/assignment/all', layout: nil
   end
 
   def attachment

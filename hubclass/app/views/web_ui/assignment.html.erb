@@ -3,6 +3,6 @@
     <%= javascript_include_tag "app-assignment", "data-turbolinks-track" => true %>
 <% end %>
 
-<div  class="container" ng-controller="AssignmentController">
-  <%= render :partial => 'web_ui/shared/all_homeworks' %>
+<div class="container" ng-controller="AssignmentController">
+    <div ng-view></div>
 </div>

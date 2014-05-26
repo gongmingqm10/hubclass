@@ -1,4 +1,4 @@
-angular.module('Hust:group').controller 'GroupHomeworkRemarkController', ['api', '$scope', '$routeParams', (api, $scope, $routeParams) ->
+angular.module('Hust:common').controller 'HomeworkRemarkController', ['api', '$scope', '$routeParams', (api, $scope, $routeParams) ->
   api.show_remark_homework($scope.group_id, $routeParams.homework_id, $routeParams.submitter_id, (data) ->
     $scope.portfolio = data
   )

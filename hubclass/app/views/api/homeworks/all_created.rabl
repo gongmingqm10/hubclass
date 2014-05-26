@@ -5,6 +5,7 @@ attribute :title, :expiration, :updated_at
 node (:id) { |n| n.id.to_s }
 node(:submit_number) { |h| h.workflow.submit_number()}
 node(:members_size) {|h| h.workflow.participants.size()}
+node(:group_id) {|h| h.owner_group.id.to_s}
 
 node(:members) {|h| h.workflow.operate_status()}
 

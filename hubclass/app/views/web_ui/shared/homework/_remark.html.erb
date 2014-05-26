@@ -11,7 +11,7 @@
 <div data-ng-show="portfolio.status != 'preparation'">
   <hr>
   <p>答案</p>
-  <%= render :partial => 'web_ui/group/homework/show_answer' %>
+  <%= render :partial => 'web_ui/shared/homework/show_answer' %>
 </div>
 <div data-ng-switch="portfolio.status">
   <div data-ng-switch-when="remark">
@@ -28,6 +28,6 @@
   </div>
   <div data-ng-switch-when="finish">
     <hr>
-    <%= render :partial => 'web_ui/group/homework/show_remark' %>
+    <%= render :partial => 'web_ui/shared/homework/show_remark' %>
   </div>
 </div>

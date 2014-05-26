@@ -8,11 +8,11 @@ angular.module('Hust:group').controller 'GroupAllController', ['api', '$scope', 
     $location.url('/homework/new')
   $scope.show_note = (note_id) ->
     $location.url('/note/show/'+note_id)
-  $scope.remark_homework = (homework_id, user_id) ->
+  $scope.remark_homework = (group_id, homework_id, user_id) ->
     $location.url("/homework/#{homework_id}/remark/#{user_id}")
-  $scope.submit_homework = (homework_id) ->
+  $scope.submit_homework = (group_id, homework_id) ->
     $location.url("/homework/#{homework_id}/submit")
-  $scope.show_origin_homework = (homework_id, event) ->
+  $scope.show_origin_homework = (group_id, homework_id, event) ->
     event.stopPropagation
     $location.url('/homework/' + homework_id )
   $scope.vote_student = (student_id, event) ->

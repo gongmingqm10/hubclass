@@ -12,10 +12,10 @@
 <p>答案</p>
 <div data-ng-switch="portfolio.answer == null">
     <div data-ng-switch-when="false">
-      <%= render :partial => 'web_ui/group/homework/show_answer' %>
+      <%= render :partial => 'web_ui/shared/homework/show_answer' %>
       <div data-ng-show="portfolio.answer.remark">
         <hr>
-        <%= render :partial => 'web_ui/group/homework/show_remark' %>
+        <%= render :partial => 'web_ui/shared/homework/show_remark' %>
       </div>
     </div>
     <div data-ng-switch-when="true">

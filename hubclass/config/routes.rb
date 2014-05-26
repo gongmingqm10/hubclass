@@ -102,5 +102,6 @@ Hubclass::Application.routes.draw do
   get 'attachment', to: 'web_ui#attachment'
 
   get 'assignment', to: 'web_ui#assignment'
+  get 'assignment/all', to: 'web_ui#assignment_all'
 
 end
