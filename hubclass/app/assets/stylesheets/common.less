@@ -76,9 +76,31 @@ span.label {
   margin-right: @margin-small;
 }
 
-.panel-heading {
-  border: none !important;
-  .panel-title {
-    font-size: @font-size-base;
+.panel {
+  margin-bottom: 2px !important;
+  box-shadow: none;
+  .panel-heading {
+    background-color: #F7F7F7;
+    border: none !important;
+    .panel-title {
+      font-size: @font-size-base;
+      span {
+        margin-right: 20px;
+      }
+      .title {
+        color: @brand-primary;
+      }
+    }
   }
+  .title-href, a {
+    color: @brand-primary;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      color: @state-info-text;
+    }
+  }
+}
+.member-status {
+  color: #ffffff;
 }
