@@ -13,7 +13,7 @@ class Workflow
   def submit_number
     result = 0
     participants.each_value do |value|
-      result = result + 1 if value
+      result = result + 1 if value.present?
     end
     result
   end

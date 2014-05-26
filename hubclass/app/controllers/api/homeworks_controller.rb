@@ -55,7 +55,8 @@ class Api::HomeworksController < ApiController
     user_access_group?(params[:group_id], params[:user_id]) do
       @homework = Assignment.find(params[:id])
       @status = "preparation"
-      if answer_id = @homework.workflow.participants[submitter_id]
+      answer_id = @homework.workflow.participants[submitter_id]
+      if answer_id.present?
         @status = "remark"
         @answer = Assignment.find(answer_id)
         @status = "finish" if @answer.remark
