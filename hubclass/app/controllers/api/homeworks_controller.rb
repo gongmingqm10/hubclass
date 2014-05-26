@@ -120,10 +120,26 @@ class Api::HomeworksController < ApiController
     end
     return render status: :not_found, json: {}
   end
-  #TODO modify this method!!
-  def all
+
+  def all_todo
     found?(@user= User.find(params[:user_id])) do
-      #@homeworks = Assignment.where(is_answer: false).and("workflow.participant.#{params[:user_id]}".nil? => false).order_by(:expiration.desc)
+      group_ids = []
+      @user.groups.each do |group|
+        group_ids.push(group.id.to_s)
+      end
+      @homeworks = Assignment.where(:owner_group_id.in => group_ids).and(:is_answer => false).order_by(:updated_at.desc)
+      return render status: :ok
+    end
+    return render status: :not_found, json: {}
+  end
+
+  def all_created
+    found?(@user= User.find(params[:user_id])) do
+      group_ids = []
+      @user.owner_groups.each do |group|
+        group_ids.push(group.id.to_s)
+      end
+      @homeworks = Assignment.where(:owner_group_id.in => group_ids).and(:is_answer => false).order_by(:updated_at.desc)
       return render status: :ok
     end
     return render status: :not_found, json: {}

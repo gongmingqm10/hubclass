@@ -52,6 +52,9 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
   uploaded_attachments: (handler) ->
     $http.get("/api/users/#{_current_user.id}/attachments/uploaded").success(handler)
 
-  all_homeworks: (handler) ->
-    $http.get("/api/users/#{_current_user.id}/homeworks").success(handler)
+  all_todo_homeworks: (handler) ->
+    $http.get("/api/users/#{_current_user.id}/homeworks/todo").success(handler)
+
+  all_created_homeworks: (handler) ->
+    $http.get("/api/users/#{_current_user.id}/homeworks/created").success(handler)
 ]

@@ -72,7 +72,8 @@ Hubclass::Application.routes.draw do
         resources :courses
         resources :notes
       end
-      get '/:user_id/homeworks', on: :collection, to: 'homeworks#all'
+      get '/:user_id/homeworks/todo', on: :collection, to: 'homeworks#all_todo'
+      get '/:user_id/homeworks/created', on: :collection, to: 'homeworks#all_created'
       resources :attachments do
         get 'uploaded', on: :collection, action: :uploaded
       end

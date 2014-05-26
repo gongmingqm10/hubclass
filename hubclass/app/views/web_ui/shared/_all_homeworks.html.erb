@@ -1,0 +1,57 @@
+<div class="table-responsive">
+  <div data-ng-show="created_homeworks">
+    <hr>
+    <div class="panel panel-default" data-ng-repeat="homework in created_homeworks">
+      <div class="panel-heading" data-toggle="collapse" data-target="#{{homework.id}}" data-parent="#accordion">
+        <div class="panel-title">
+          <span class="title">{{homework.title}}</span>
+          <span>{{homework.submit_number}}/{{homework.members_size}}</span>
+          <span data-ng-show="homework.expiration">截止日期：{{homework.expiration | date:'yyyy-MM-dd'}}</span>
+          <a class="pull-right" data-ng-click="show_origin_homework(homework.id, $event)">查看内容<span class="icon icon-eye"></span></a>
+        </div>
+      </div>
+      <div id="{{homework.id}}" class="panel-collapse collapse">
+        <div class="panel-body">
+          <table class="table">
+            <tr data-ng-repeat="member in homework.members">
+              <td class="col-md-3 title-href text-center" data-ng-click="remark_homework(homework.id, member.id)">
+                {{member.username}}
+                <span data-ng-show="member.status == 'remark'" class="icon icon-edit"></span>
+                <span data-ng-hide="member.status == 'remark'" class="icon icon-eye"></span>
+              </td>
+              <td class="col-md-3 text-center member-status" data-ng-class="{'label-primary': member.status == 'preparation'}">In preparation</td>
+              <td class="col-md-3 text-center member-status" data-ng-class="{'label-info': member.status == 'remark'}">In remark</td>
+              <td class="col-md-3 text-center member-status" data-ng-class="{'label-success': member.status == 'finish'}">Finish</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-hover" data-ng-show="submit_homeworks">
+    <thead>
+    <tr>
+      <th>作业</th>
+      <th>创建人</th>
+      <th>提交日期</th>
+      <th>创建时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-ng-repeat="homework in submit_homeworks">
+      <td>
+        <a href="javascript:void(0);" data-ng-click="submit_homework(homework.id)">
+          {{homework.title}}
+          <span class="icon icon-eye" data-ng-hide="homework.submittable"></span>
+          <span class="icon icon-edit" data-ng-show="homework.submittable"></span>
+        </a>
+      </td>
+      <td>{{homework.author.username}}</td>
+      <td data-ng-show="homework.expiration">{{homework.expiration | date:'yyyy-MM-dd'}}</td>
+      <td data-ng-hide="homework.expiration">自由模式</td>
+      <td>{{homework.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
