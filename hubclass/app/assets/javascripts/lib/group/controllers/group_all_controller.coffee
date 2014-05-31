@@ -1,4 +1,4 @@
-angular.module('Hust:group').controller 'GroupAllController', ['api', '$scope', '$location', '$routeParams', (api, $scope, $location, $routeParams) ->
+angular.module('Hust:group').controller 'GroupAllController', ['api', '$scope', '$location', '$window', (api, $scope, $location, $window) ->
 
   $scope.is_current_tab = (tab) ->
     tab is $scope.current_tab
@@ -27,4 +27,9 @@ angular.module('Hust:group').controller 'GroupAllController', ['api', '$scope', 
     $scope.created_homeworks = data
   api.index_submit_homeworks $scope.group_id, (data) ->
     $scope.submit_homeworks = data
+  $scope.start_session = () ->
+    api.create_session $scope.group_id, (data) ->
+      $window.location.href = "/course/#{$scope.group_id}/session/#{data.session_id}"
+
+
 ]

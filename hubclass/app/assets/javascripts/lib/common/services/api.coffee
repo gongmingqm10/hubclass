@@ -57,4 +57,7 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
 
   all_created_homeworks: (handler) ->
     $http.get("/api/users/#{_current_user.id}/homeworks/created").success(handler)
+
+  create_session: (group_id, handler) ->
+    $http.get("/api/users/#{_current_user.id}/groups/#{group_id}/create_session").success(handler)
 ]

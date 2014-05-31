@@ -1,0 +1,47 @@
+<% content_for :assets do %>
+    <%= stylesheet_link_tag    "video", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "app-video", "data-turbolinks-track" => true %>
+<% end %>
+<div class="container" ng-controller="VideoController">
+    <div id="videobox">
+
+    </div>
+    <script type="text/javascript">
+        // Initialize API key, session, and token...
+        // Think of a session as a room, and a token as the key to get in to the room
+        // Sessions and tokens are generated on your server and passed down to the client
+        var apiKey = "<%= @api_key %>";
+        var sessionId = "<%= @session_id %>";
+        var token = "<%= @token %>";
+        // Initialize session, set up event listeners, and connect
+        var session = TB.initSession(sessionId);
+        session.addEventListener('sessionConnected', sessionConnectedHandler);
+        session.addEventListener('streamCreated', streamCreatedHandler);
+        session.connect(apiKey, token);
+
+        function sessionConnectedHandler(event) {
+            var publisher = TB.initPublisher(apiKey, 'videobox');
+            session.publish(publisher);
+            subscribeToStreams(event.streams);
+
+        }
+        function streamCreatedHandler(event) {
+            // Subscribe to any new streams that are created
+            subscribeToStreams(event.streams);
+        }
+
+        function subscribeToStreams(streams) {
+            for (var i = 0; i < streams.length; i++) {
+                if (streams[i].connection.connectionId == session.connection.connectionId) {
+                    return;
+                }
+
+                var div = document.createElement('div');
+                div.setAttribute('id', 'stream' + streams[i].streamId);
+                document.body.appendChild(div);
+
+                session.subscribe(streams[i], div.id);
+            }
+        }
+    </script>
+</div>

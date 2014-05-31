@@ -1,3 +1,5 @@
+require "OpenTok"
+
 class Api::GroupsController < ApiController
 
   def index
@@ -34,6 +36,30 @@ class Api::GroupsController < ApiController
       return render status: :ok, json: {vote: @group.records[params[:student_id]]["vote"]}
     end
     return render status: :not_found, json: {}
+  end
+
+  def create_session
+    group = Group.find(params[:group_id])
+    if group.session_id.present?
+      session_id = group.session_id
+    else
+      opentok_instance = OpenTok::OpenTok.new ENV["OPENTOK_API_KEY"], ENV["OPENTOK_API_SECRET"]
+      session = opentok_instance.create_session :media_mode => :relayed
+      session_id = session.session_id
+      group.session_id = session_id
+      group.save!
+    end
+    return render status: :ok, json: {session_id: session_id}
+  end
+
+  private
+
+  def session_role (user)
+    if user.role == 'teacher'
+      return 'moderator'
+    else
+      return 'publisher'
+    end
   end
 
 end

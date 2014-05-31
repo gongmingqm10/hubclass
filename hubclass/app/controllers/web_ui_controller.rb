@@ -1,3 +1,5 @@
+require "OpenTok"
+
 class WebUiController < ApplicationController
 
   before_action :login?, except: [:login, :sessions, :layout]
@@ -53,6 +55,14 @@ class WebUiController < ApplicationController
 
   def group_all
     render partial: 'web_ui/group/all', layout: nil
+  end
+
+  def group_video
+    @session_id = params[:session_id]
+    opentok = OpenTok::OpenTok.new ENV["OPENTOK_API_KEY"], ENV["OPENTOK_API_SECRET"]
+    @token = opentok.generate_token @session_id
+    @api_key = ENV["OPENTOK_API_KEY"]
+    render 'video'
   end
 
   def note_new

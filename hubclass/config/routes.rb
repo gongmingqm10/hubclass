@@ -61,6 +61,7 @@ Hubclass::Application.routes.draw do
       resources :groups do
         put 'absent/:student_id', action: :absent_student
         put 'vote/:student_id', action: :vote_student
+        get 'create_session', action: :create_session
         resources :homeworks do
           get 'create', on: :collection, action: :get_created_homeworks
           get 'submit', on: :collection, action: :get_todo_homeworks
@@ -88,6 +89,7 @@ Hubclass::Application.routes.draw do
   get 'course', to: 'web_ui#course'
   get 'course/all', to: 'web_ui#course_all'
   get 'course/:group_id', to: 'web_ui#group_show'
+  get 'course/:group_id/session/:session_id', to: 'web_ui#group_video'
 
   get 'group/all', to: 'web_ui#group_all'
 

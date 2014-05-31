@@ -4,6 +4,7 @@ class Group
 
   field :name, type: String
   field :abstract, type: String
+  field :session_id, type: String
   field :records, type: Hash, default: {}
 
   validates_presence_of :name
