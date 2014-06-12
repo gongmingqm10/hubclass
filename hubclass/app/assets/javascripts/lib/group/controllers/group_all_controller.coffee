@@ -17,10 +17,10 @@ angular.module('Hust:group').controller 'GroupAllController', ['api', '$scope', 
     $location.url('/homework/' + homework_id )
   $scope.vote_student = (student_id, event) ->
     api.vote_student $scope.group_id, student_id, (response) ->
-      $(event.target).text(response.vote)
+      $(event.target).parent().siblings(".vote").text(response.vote)
   $scope.absent_student = (student_id, event) ->
     api.absent_student $scope.group_id, student_id, (response) ->
-      $(event.target).text(response.absence)
+      $(event.target).parent().siblings(".absence").text(response.absence)
   api.index_notes $scope.group_id, (data) ->
     $scope.notes = data
   api.index_created_homeworks $scope.group_id, (data) ->

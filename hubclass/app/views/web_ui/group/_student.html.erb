@@ -14,8 +14,18 @@
       <td>{{student.username}}</td>
       <td>{{student.user_number}}</td>
       <td>{{student.branch}}</td>
-      <td><a href="javascript:void(0);" data-ng-click="vote_student(student.user_id, $event)">{{student.record.vote}}</a></td>
-      <td><a href="javascript:void(0);" data-ng-click="absent_student(student.user_id, $event)">{{student.record.absence}}</a></td>
+      <td>
+        <a href="javascript:void(0);" data-ng-click="vote_student(student.user_id, $event)">
+            <span class="icon icon-thumbs-up-alt text-primary"></span>
+        </a>
+        <span class="text-primary vote">{{student.record.vote}}</span>
+      </td>
+      <td>
+        <a href="javascript:void(0);" data-ng-click="absent_student(student.user_id, $event)">
+          <span class="icon icon-clock text-danger"></span>
+        </a>
+        <span class="text-danger absence">{{student.record.absence}}</span>
+      </td>
     </tr>
     </tbody>
   </table>

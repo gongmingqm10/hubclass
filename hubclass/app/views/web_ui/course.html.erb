@@ -4,22 +4,23 @@
 <% end %>
 
 <div class="container" ng-controller="CourseController">
-  <div class="table-responsive">
+  <p class="text-warning" data-ng-hide="groups">您暂时处于游离状态～</p>
+  <div class="table-responsive" data-ng-show="groups">
     <table class="table table-hover">
       <thead>
       <tr>
         <th>课程</th>
         <th>课堂</th>
-        <th>任课教师</th>
-        <th>操作</th>
+        <th>教师</th>
+        <th>学生</th>
       </tr>
       </thead>
       <tbody>
       <tr data-ng-repeat="group in groups">
-        <td>{{group.course.name}}</td>
+        <td><a data-ng-href="/course/{{group.id}}">{{group.course.name}}</a></td>
         <td>{{group.name}}</td>
         <td>{{group.teacher.username}}</td>
-        <td><a data-ng-href="/course/{{group.id}}">进入</a></td>
+        <td>{{group.size}}</td>
       </tr>
       </tbody>
     </table>

@@ -1,2 +1,4 @@
-<button type="button" class="btn btn-primary" data-ng-click="redirect_homework_new()">布置作业</button>
+<button type="button" class="btn btn-default" data-ng-click="redirect_homework_new()" data-ng-show="current_user.role == 'teacher'">
+  布置新作业
+</button>
 <%= render :partial => 'web_ui/shared/homework/all' %>

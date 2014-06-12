@@ -9,6 +9,7 @@
 <body>
 <div class="container">
   <div class="login" ng-controller="LoginController">
+    <h4><img src="/images/hust.png">    教学互动平台</h4>
     <%= form_tag login_path, class: 'form form-horizontal', name: 'loginForm', role: :form, id: 'login-form'  do %>
         <div class="form-group has-error">
           <% if @error%>

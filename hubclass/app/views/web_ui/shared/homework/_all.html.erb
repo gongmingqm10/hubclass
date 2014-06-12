@@ -1,4 +1,5 @@
 <div class="table-responsive">
+  <p class="text-warning" data-ng-hide="created_homeworks && submit_homeworks">您暂时没有收到作业或者布置作业～.～</p>
   <div data-ng-show="created_homeworks">
     <hr>
     <div class="panel panel-default" data-ng-repeat="homework in created_homeworks">

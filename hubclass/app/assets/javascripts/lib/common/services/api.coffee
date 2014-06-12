@@ -4,6 +4,9 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
   current_user: ->
     _current_user || ''
 
+  show_user_info: (handler) ->
+    $http.get("/api/users/#{_current_user.id}").success(handler)
+
   index_groups: (handler) ->
     $http.get("/api/users/#{_current_user.id}/groups").success(handler)
 

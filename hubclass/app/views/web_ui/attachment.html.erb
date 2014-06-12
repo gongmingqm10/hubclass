@@ -4,7 +4,8 @@
 <% end %>
 
 <div class="container" ng-controller="AttachmentController">
-  <div class="table-responsive">
+  <p class="text-warning" data-ng-hide="attachments">没有找到任何与您相关的课件～.～</p>
+  <div class="table-responsive" data-ng-show="attachments">
     <table class="table">
       <thead>
       <tr>

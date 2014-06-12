@@ -3,8 +3,8 @@
 body{
   background-image: url('bg.png');
   .login{
-    width: 320px;
-    height: 250px;
+    width: 360px;
+    height: 300px;
     border-radius: 5px;
     padding: 25px;
     margin: 150px auto;
@@ -24,34 +24,38 @@ body{
   button {
     height: 40px !important;
   }
-}
 
-.left-inner-addon {
-  position: relative;
-  input {
-    padding-left: 30px;
+  .left-inner-addon {
+    position: relative;
+    input {
+      padding-left: 30px;
+    }
+    span {
+      position: absolute;
+      padding: 10px 12px;
+      left: 18px;
+      top: 0px;
+      pointer-events: none;
+      color: rgb(170, 170, 170);
+    }
   }
-  span {
-    position: absolute;
-    padding: 10px 12px;
-    left: 18px;
-    top: 0px;
-    pointer-events: none;
-    color: rgb(170, 170, 170);
-  }
-}
 
-.right-inner-addon {
-  position: relative;
-  input {
-    padding-right: 40px;
+  img {
+    width: 32px;
   }
-  span {
-    position: absolute;
-    right: 18px;
-    top: 0px;
-    padding: 10px 12px;
-    pointer-events: none;
-    color: rgb(170, 170, 170);
+
+  .right-inner-addon {
+    position: relative;
+    input {
+      padding-right: 40px;
+    }
+    span {
+      position: absolute;
+      right: 18px;
+      top: 0px;
+      padding: 10px 12px;
+      pointer-events: none;
+      color: rgb(170, 170, 170);
+    }
   }
 }

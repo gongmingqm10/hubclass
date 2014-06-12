@@ -29,7 +29,7 @@ div#wrap {
   & > .container {
     background-color: #ffffff;
     margin-top: 15px;
-    padding: 0 @margin-middle*2 @margin-large;
+    padding: @margin-large @margin-middle*2;
   }
 }
 
@@ -92,13 +92,17 @@ span.label {
       }
     }
   }
-  .title-href, a {
-    color: @brand-primary;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.title-href, a {
+  color: @brand-primary;
+  &:hover {
+    cursor: pointer;
     text-decoration: none;
-    &:hover {
-      cursor: pointer;
-      color: @state-info-text;
-    }
   }
 }
 .member-status {

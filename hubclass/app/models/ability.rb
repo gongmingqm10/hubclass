@@ -30,7 +30,7 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     user ||= User.new
-    can :admin_access, :page if user.role == 'admin'
+    can :manage, :all if user.role == 'admin'
 
   end
 end

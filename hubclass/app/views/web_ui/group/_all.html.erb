@@ -1,11 +1,23 @@
-<div>
-  <p>课堂：{{group.name}}</p>
-  <br>
-  <p>课程：{{group.course.name}}</p>
-  <br>
-  <p>任课教师：{{group.teacher.username}}</p>
-  <button type="button" class="btn btn-primary" data-ng-click="start_session()">开启直播</button>
+<div class="head-info">
+  <h3>{{group.course.name}}</h3>
+  <p class="text-muted">{{group.name}}</p>
+  <p class="text-muted">教师：{{group.teacher.username}}</p>
+  <div class="head-btn">
+    <a href="javascript:void(0);" data-ng-click="start_session()">
+      <span class="icon icon-videocam"></span> 直播
+    </a>
+    <a href="javascript:void(0);">
+      <span class="icon icon-user-add"></span> 成员
+    </a>
+    <a href="javascript:void(0);">
+      <span class="icon icon-cog"></span> 设置
+    </a>
+    <a href="javascript:void(0);" data-ng-click="">
+      <span class="icon icon-chart-bar"></span> 统计
+    </a>
+  </div>
 </div>
+<hr>
 
 <div>
   <ul id="groupTabs" class="nav nav-tabs">
