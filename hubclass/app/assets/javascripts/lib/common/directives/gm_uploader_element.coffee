@@ -17,7 +17,7 @@ angular.module('Hust:common').directive 'gmUploaderElement', ['$compile', ($comp
     scope.files = []
 
     upload_on_success = (data) ->
-      file_container.append('<a target="_blank" href="' + data.url + '"> ' + data.filename + '</a>')
+      file_container.append('<a class="link" target="_blank" href="' + data.url + '"><span class="icon icon-attach"></span> ' + data.filename + '</a>')
       scope.files.push(data.id)
 
     upload_on_error = (data) ->

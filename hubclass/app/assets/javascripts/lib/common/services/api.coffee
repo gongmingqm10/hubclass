@@ -22,6 +22,9 @@ angular.module('Hust:common').factory 'api', ['$cookieStore', '$http', ($cookieS
   index_notes: (group_id, handler) ->
     $http.get("/api/users/#{_current_user.id}/groups/#{group_id}/notes").success(handler)
 
+  delete_note: (group_id, id, handler) ->
+    $http.delete("/api/users/#{_current_user.id}/groups/#{group_id}/notes/#{id}").success(handler)
+
   index_created_homeworks: (group_id, handler) ->
     $http.get("/api/users/#{_current_user.id}/groups/#{group_id}/homeworks/create").success(handler)
 

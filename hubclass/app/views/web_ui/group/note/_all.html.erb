@@ -10,20 +10,24 @@
       <th>笔记</th>
       <th>作者</th>
       <th>标签</th>
+      <th>类型</th>
       <th>发布时间</th>
+      <th>操作</th>
     </tr>
     </thead>
     <tbody>
     <tr data-ng-repeat="note in notes">
-      <td>
+      <td class="col-md-4">
         <a href="javascript:void(0);" data-ng-click="show_note(note.id)">{{note.title}}</a>
         <span class="icon icon-attach" data-ng-show="note.attach"></span>
       </td>
-      <td>{{note.owner.username}}</td>
-      <td>
+      <td class="col-md-1">{{note.owner.username}}</td>
+      <td class="col-md-2">
         <span class="label label-info" data-ng-repeat="tag in note.tags"> {{tag}} </span>
       </td>
-      <td>{{note.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td class="col-md-2 text-success">{{note.typename}}</td>
+      <td class="col-md-2">{{note.updated_at | date:'yyyy-MM-dd HH:mm'}}</td>
+      <td class="col-md-1"><a href="javascript:viod(0);" data-ng-click="delete_note(note.id)" data-ng-show="current_user.id == note.owner.owner_id"><span class="icon icon-trash"></span></a></td>
     </tr>
     </tbody>
   </table>

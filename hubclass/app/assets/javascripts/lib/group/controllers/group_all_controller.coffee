@@ -30,6 +30,13 @@ angular.module('Hust:group').controller 'GroupAllController', ['api', '$scope', 
   $scope.start_session = () ->
     api.create_session $scope.group_id, (data) ->
       $window.location.href = "/course/#{$scope.group_id}/session/#{data.session_id}"
+  $scope.delete_note = (note_id) ->
+    api.delete_note $scope.group_id, note_id, (data)->
+      remove_note_by_id(note_id)
 
-
+  remove_note_by_id = (id) ->
+    _.each $scope.notes, (note, index) ->
+      if id is note.id
+        $scope.notes.splice(index, 1)
+        return
 ]

@@ -14,6 +14,7 @@ class Api::NotesController < ApiController
           title: params[:title],
           content: params[:content],
           tags: params[:tags],
+          type: params[:type],
           owner: @user,
           owner_group: @group)
       ) do
@@ -34,6 +35,15 @@ class Api::NotesController < ApiController
     user_access_group?(params[:group_id], params[:user_id]) do
       @note = Note.find(params[:id])
       return render status: :ok
+    end
+    return render status: :not_found, json: {}
+  end
+
+  def destroy
+    user_access_group?(params[:group_id], params[:user_id]) do
+      note = Note.find(params[:id])
+      note.delete
+      return render status: :ok, json: {}
     end
     return render status: :not_found, json: {}
   end

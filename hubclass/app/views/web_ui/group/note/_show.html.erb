@@ -1,6 +1,6 @@
-<h2 class="text-center">{{portfolio.title}}</h2>
+<h3 class="text-center">{{portfolio.title}}</h3>
 <div>
-  <p class="text-center text-info"> {{portfolio.author.username}}  发表于{{portfolio.updated_at | date: 'yyyy-MM-dd'}}</p>
+  <p class="text-center text-muted"> {{portfolio.author.username}}  发表于{{portfolio.updated_at | date: 'yyyy-MM-dd'}}</p>
   <span data-ng-repeat="tag in note.tags" class="icon icon-tags text-primary">{{tag}}</span>
 </div>
 <hr>
